@@ -1,6 +1,7 @@
 {
-  "name": "site-creator-vinext-starter",
-  "version": "0.1.0",
+  "name": "tennect-website",
+  "version": "1.0.0",
+  "description": "Marketing website for the Tennect tennis community app",
   "private": true,
   "engines": {
     "node": ">=22.13.0"
@@ -15,7 +16,7 @@
   },
   "dependencies": {
     "drizzle-orm": "0.45.2",
-    "next": "16.2.6",
+    "next": "16.2.12",
     "react": "19.2.6",
     "react-dom": "19.2.6"
   },
