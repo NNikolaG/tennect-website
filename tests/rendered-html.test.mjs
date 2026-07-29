@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 
 const projectRoot = new URL("../", import.meta.url);
 const projectRootPath = fileURLToPath(projectRoot);
+const expectedSiteOrigin = process.env.SITE_URL ?? "http://localhost:3000";
 let appProcess;
 let baseUrl;
 
@@ -89,14 +90,31 @@ async function htmlFor(pathname) {
 test("renders the English Tennect landing page", async () => {
   const html = await htmlFor("/");
 
+  assert.match(html, /<html lang="en"/);
   assert.match(
     html,
     /<title>Tennect — Find Tennis Players &amp; Courts Near You<\/title>/,
   );
+  assert.match(
+    html,
+    /Find tennis players at your level, discover nearby courts, organise matches and track your progress with Tennect\./,
+  );
   assert.match(html, /Your next/);
-  assert.match(html, /All courts on one map\./);
+  assert.match(
+    html,
+    /Tennect player profile with availability schedule and preferred court surfaces/,
+  );
+  assert.match(html, /tennect-profile-schedule\.png/);
+  assert.doesNotMatch(html, /class="hero-side/);
+  assert.match(html, /Download Tennect for iOS/);
+  assert.match(html, /Android version coming soon/);
+  assert.match(html, /class="android-soon-card"/);
+  assert.match(html, /class="button button-lime feature-cta"/);
+  assert.match(html, /Is Tennect free\?/);
+  assert.match(html, /Requires iOS 18\.6|requires iOS 18\.6/);
   assert.match(html, /https:\/\/apple\.co\/3RAyuwX/);
-  assert.match(html, /google-play-badge-en\.png/);
+  assert.doesNotMatch(html, /google-play-badge-en\.png/);
+  assert.doesNotMatch(html, /Get early access|Get launch updates/);
   assert.equal((html.match(/aria-haspopup="dialog"/g) ?? []).length, 8);
   assert.doesNotMatch(html, /codex-preview|Building your site/);
 });
@@ -107,18 +125,68 @@ test("renders Serbian and Russian localized routes", async () => {
     htmlFor("/ru"),
   ]);
 
-  assert.match(serbian, /Svi tereni na jednoj mapi\./);
-  assert.match(serbian, /google-play-badge-sr\.png/);
-  assert.match(russian, /Все корты на одной карте\./);
-  assert.match(russian, /google-play-badge-ru\.png/);
+  assert.match(serbian, /<html lang="sr-Latn"/);
+  assert.match(
+    serbian,
+    /Tennect profil igrača sa rasporedom dostupnosti i omiljenim podlogama/,
+  );
+  assert.match(serbian, /Preuzmi Tennect za iOS/);
+  assert.match(serbian, /Da li je Tennect besplatan\?/);
+  assert.doesNotMatch(serbian, /Rani pristup|Prijavi se za novosti|Tennect-a/);
+  assert.doesNotMatch(serbian, /google-play-badge-sr\.png/);
+  assert.match(russian, /<html lang="ru"/);
+  assert.match(
+    russian,
+    /Профиль игрока Tennect с расписанием и любимыми покрытиями/,
+  );
+  assert.match(russian, /Скачать Tennect для iOS/);
+  assert.match(russian, /Tennect бесплатный\?/);
+  assert.doesNotMatch(russian, /google-play-badge-ru\.png|Ранний доступ/);
+});
+
+test("serves static robots and localized sitemap metadata", async () => {
+  const [robotsResponse, sitemapResponse] = await Promise.all([
+    render("/robots.txt"),
+    render("/sitemap.xml"),
+  ]);
+
+  assert.equal(robotsResponse.status, 200);
+  assert.equal(sitemapResponse.status, 200);
+  assert.ok(
+    (await robotsResponse.text()).includes(
+      `Sitemap: ${expectedSiteOrigin}/sitemap.xml`,
+    ),
+  );
+
+  const sitemap = await sitemapResponse.text();
+  assert.ok(sitemap.includes(`<loc>${expectedSiteOrigin}/sr</loc>`));
+  assert.match(sitemap, /hreflang="sr-Latn"/);
+  assert.match(sitemap, /hreflang="x-default"/);
+});
+
+test("pre-renders every public SEO route", async () => {
+  const manifest = JSON.parse(
+    await readFile(
+      new URL(".next/prerender-manifest.json", projectRoot),
+      "utf8",
+    ),
+  );
+
+  for (const pathname of ["/", "/sr", "/ru", "/robots.txt", "/sitemap.xml"]) {
+    assert.ok(manifest.routes[pathname], `${pathname} must be pre-rendered`);
+  }
+
+  assert.equal((await render("/en")).status, 404);
 });
 
 test("keeps required public assets in the repository", async () => {
   await Promise.all([
     access(new URL("public/og.png", projectRoot)),
     access(new URL("public/media/tennect-icon.png", projectRoot)),
+    access(new URL("public/media/tennect-profile-schedule.png", projectRoot)),
+    access(new URL("public/media/tennis-ball-realistic.png", projectRoot)),
     access(new URL("public/media/app-store-badge-en.svg", projectRoot)),
-    access(new URL("public/media/google-play-badge-sr.png", projectRoot)),
+    access(new URL("public/media/app-store-badge-ru.svg", projectRoot)),
   ]);
 });
 
@@ -130,6 +198,16 @@ test("centers every shared showcase dialog in the viewport", async () => {
   assert.match(dialogRule, /left:\s*50%/);
   assert.match(dialogRule, /top:\s*50%/);
   assert.match(dialogRule, /transform:\s*translate\(-50%,\s*-50%\)/);
+});
+
+test("keeps desktop header controls at the same height", async () => {
+  const css = await readFile(new URL("app/globals.css", projectRoot), "utf8");
+  const downloadRule = css.match(/\.header-cta\s*\{([^}]*)\}/)?.[1] ?? "";
+  const languageRule =
+    css.match(/\.language-switcher summary\s*\{([^}]*)\}/)?.[1] ?? "";
+
+  assert.match(downloadRule, /height:\s*52px/);
+  assert.match(languageRule, /min-height:\s*52px/);
 });
 
 test("uses only the standard Next.js runtime", async () => {

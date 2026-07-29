@@ -10,15 +10,10 @@ import { GalleryShowcase } from "./GalleryShowcase";
 
 const legalBase =
   "https://whwhvvfbxaoeezbtqhga.supabase.co/storage/v1/object/public/legal";
+const appStoreUrl = "https://apple.co/3RAyuwX";
 
 function legalLocale(locale: Locale) {
   return locale === "sr" ? "sr-Latn" : locale;
-}
-
-function earlyAccessHref(label: string) {
-  return `mailto:tennect@outlook.com?subject=${encodeURIComponent(
-    `Tennect — ${label}`,
-  )}`;
 }
 
 export function TennectHome({ locale }: { locale: Locale }) {
@@ -27,8 +22,6 @@ export function TennectHome({ locale }: { locale: Locale }) {
     locale === "ru"
       ? "/media/app-store-badge-ru.svg"
       : "/media/app-store-badge-en.svg";
-  const googlePlayBadge = `/media/google-play-badge-${locale}.png`;
-  const accessHref = earlyAccessHref(content.nav.earlyAccess);
   const questionHref = `mailto:tennect@outlook.com?subject=${encodeURIComponent(
     `Tennect — ${content.faq.ask}`,
   )}`;
@@ -42,6 +35,12 @@ export function TennectHome({ locale }: { locale: Locale }) {
     inLanguage: content.htmlLang,
     description: content.schema.description,
     featureList: content.schema.features,
+    installUrl: appStoreUrl,
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "EUR",
+    },
   };
   const faqSchema = {
     "@context": "https://schema.org",
@@ -85,7 +84,7 @@ export function TennectHome({ locale }: { locale: Locale }) {
           <details className="language-switcher">
             <summary aria-label={content.aria.selectLanguage}>
               <span>{content.localeLabel}</span>
-              <b aria-hidden="true">⌄</b>
+              <b aria-hidden="true" />
             </summary>
             <div>
               {locales.map((item) => (
@@ -101,8 +100,13 @@ export function TennectHome({ locale }: { locale: Locale }) {
               ))}
             </div>
           </details>
-          <a className="header-cta" href={accessHref}>
-            {content.nav.earlyAccess} <span aria-hidden="true">↗</span>
+          <a
+            className="header-cta"
+            href={appStoreUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {content.nav.download} <span aria-hidden="true">↗</span>
           </a>
           <details className="mobile-menu">
             <summary aria-label={content.aria.openNav}>
@@ -121,31 +125,10 @@ export function TennectHome({ locale }: { locale: Locale }) {
       <main id="top">
         <section className="hero" aria-labelledby="hero-title">
           <div className="court-lines" aria-hidden="true" />
-          <div className="hero-side hero-side-left">
-            <div className="orbit-ball" aria-hidden="true">
-              <span />
-            </div>
-            <p className="side-title">{content.side.perfectMatch}</p>
-            <p className="side-copy">{content.side.filters}</p>
-            <div className="surface-stack" aria-label={content.aria.surfaces}>
-              {content.side.surfaces.map((surface) => (
-                <span key={surface}>{surface}</span>
-              ))}
-            </div>
-            <div className="side-divider" />
-            <div className="side-map" aria-hidden="true">
-              <i />
-              <span />
-              <span />
-              <span />
-            </div>
-            <p className="side-title">{content.side.everyCourt}</p>
-          </div>
-
-          <div className="hero-phone" aria-label={content.aria.matchPreview}>
+          <div className="hero-phone" aria-label={content.aria.profilePreview}>
             <div className="phone-speaker" aria-hidden="true" />
             <Image
-              src="/media/tennect-match-preview.png"
+              src="/media/tennect-profile-schedule.png"
               width={1260}
               height={2736}
               alt={content.hero.imageAlt}
@@ -166,37 +149,34 @@ export function TennectHome({ locale }: { locale: Locale }) {
             </h1>
             <p className="hero-copy">{content.hero.copy}</p>
             <div className="hero-actions">
-              <a className="button button-lime" href="#features">
+              <div className="download-action">
+                <span className="download-label">{content.hero.download}</span>
+                <div className="store-options">
+                  <a
+                    className="store-badge-link app-store-link"
+                    href={appStoreUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={content.hero.appStoreBadgeAlt}
+                  >
+                    <Image
+                      src={appStoreBadge}
+                      width={120}
+                      height={40}
+                      alt={content.hero.appStoreBadgeAlt}
+                    />
+                  </a>
+                  <div className="android-soon-card">
+                    <span aria-hidden="true">●</span>
+                    {content.hero.androidSoon}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="platform-actions">
+              <a className="button button-lime feature-cta" href="#features">
                 {content.hero.explore} <span aria-hidden="true">↓</span>
               </a>
-              <div className="store-badges">
-                <a
-                  className="store-badge-link app-store-link"
-                  href="https://apple.co/3RAyuwX"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={content.hero.appStoreBadgeAlt}
-                >
-                  <Image
-                    src={appStoreBadge}
-                    width={120}
-                    height={40}
-                    alt={content.hero.appStoreBadgeAlt}
-                  />
-                </a>
-                <a
-                  className="store-badge-link google-play-link"
-                  href={accessHref}
-                  aria-label={content.hero.googlePlayBadgeAlt}
-                >
-                  <Image
-                    src={googlePlayBadge}
-                    width={646}
-                    height={250}
-                    alt={content.hero.googlePlayBadgeAlt}
-                  />
-                </a>
-              </div>
             </div>
             <div className="hero-notes">
               {content.hero.notes.map((note) => (
@@ -288,11 +268,23 @@ export function TennectHome({ locale }: { locale: Locale }) {
         </section>
 
         <section className="final-cta">
-          <div className="final-ball" aria-hidden="true" />
+          <Image
+            className="final-ball"
+            src="/media/tennis-ball-realistic.png"
+            width={768}
+            height={768}
+            alt=""
+            aria-hidden="true"
+          />
           <p className="eyebrow">{content.finalCta.kicker}</p>
           <h2>{content.finalCta.title}</h2>
           <p>{content.finalCta.copy}</p>
-          <a className="button button-dark" href={accessHref}>
+          <a
+            className="button button-dark"
+            href={appStoreUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
             {content.finalCta.button} <span aria-hidden="true">↗</span>
           </a>
         </section>

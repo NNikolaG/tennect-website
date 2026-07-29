@@ -34,8 +34,7 @@ export type SiteContent = {
     mobileNav: string;
     openNav: string;
     selectLanguage: string;
-    surfaces: string;
-    matchPreview: string;
+    profilePreview: string;
     features: string;
     seoUses: string;
     legalNav: string;
@@ -47,22 +46,17 @@ export type SiteContent = {
     howItWorks: string;
     insideApp: string;
     faq: string;
-    earlyAccess: string;
+    download: string;
     menu: string;
-  };
-  side: {
-    perfectMatch: string;
-    filters: string;
-    surfaces: [string, string, string];
-    everyCourt: string;
   };
   hero: {
     eyebrow: string;
     title: [string, string, string];
     copy: string;
+    download: string;
     explore: string;
+    androidSoon: string;
     appStoreBadgeAlt: string;
-    googlePlayBadgeAlt: string;
     notes: [string, string, string];
     imageAlt: string;
   };
@@ -106,7 +100,7 @@ export type SiteContent = {
     kicker: string;
     title: string;
     ask: string;
-    items: [FaqContent, FaqContent, FaqContent, FaqContent, FaqContent];
+    items: FaqContent[];
   };
   finalCta: {
     kicker: string;
