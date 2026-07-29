@@ -268,7 +268,14 @@ export function TennectHome({ locale }: { locale: Locale }) {
         </section>
 
         <section className="final-cta">
-          <div className="final-ball" aria-hidden="true" />
+          <Image
+            className="final-ball"
+            src="/media/tennis-ball-realistic.png"
+            width={768}
+            height={768}
+            alt=""
+            aria-hidden="true"
+          />
           <p className="eyebrow">{content.finalCta.kicker}</p>
           <h2>{content.finalCta.title}</h2>
           <p>{content.finalCta.copy}</p>

@@ -184,6 +184,7 @@ test("keeps required public assets in the repository", async () => {
     access(new URL("public/og.png", projectRoot)),
     access(new URL("public/media/tennect-icon.png", projectRoot)),
     access(new URL("public/media/tennect-profile-schedule.png", projectRoot)),
+    access(new URL("public/media/tennis-ball-realistic.png", projectRoot)),
     access(new URL("public/media/app-store-badge-en.svg", projectRoot)),
     access(new URL("public/media/app-store-badge-ru.svg", projectRoot)),
   ]);
