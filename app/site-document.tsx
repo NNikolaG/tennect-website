@@ -16,6 +16,9 @@ const body = Manrope({
 
 export const sharedMetadata: Metadata = {
   applicationName: "Tennect",
+  verification: {
+    google: "eJqjKabTaWM86Yxox6e4ESwrjEkFfp5SHjeEYBsU-88",
+  },
   icons: {
     icon: "/media/tennect-icon.png",
     apple: "/media/tennect-icon.png",
