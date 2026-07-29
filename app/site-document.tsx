@@ -14,7 +14,7 @@ const body = Manrope({
   weight: ["400", "500", "600", "700", "800"],
 });
 
-export const metadata: Metadata = {
+export const sharedMetadata: Metadata = {
   applicationName: "Tennect",
   icons: {
     icon: "/media/tennect-icon.png",
@@ -33,11 +33,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export function SiteDocument({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+  lang,
+}: Readonly<{ children: React.ReactNode; lang: string }>) {
   return (
-    <html lang="en">
+    <html lang={lang}>
       <body className={`${display.variable} ${body.variable}`}>
         {children}
       </body>

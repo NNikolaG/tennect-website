@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 
 const projectRoot = new URL("../", import.meta.url);
 const projectRootPath = fileURLToPath(projectRoot);
+const expectedSiteOrigin = process.env.SITE_URL ?? "http://localhost:3000";
 let appProcess;
 let baseUrl;
 
@@ -89,6 +90,7 @@ async function htmlFor(pathname) {
 test("renders the English Tennect landing page", async () => {
   const html = await htmlFor("/");
 
+  assert.match(html, /<html lang="en"/);
   assert.match(
     html,
     /<title>Tennect — Find Tennis Players &amp; Courts Near You<\/title>/,
@@ -107,10 +109,47 @@ test("renders Serbian and Russian localized routes", async () => {
     htmlFor("/ru"),
   ]);
 
+  assert.match(serbian, /<html lang="sr-Latn"/);
   assert.match(serbian, /Svi tereni na jednoj mapi\./);
   assert.match(serbian, /google-play-badge-sr\.png/);
+  assert.match(russian, /<html lang="ru"/);
   assert.match(russian, /Все корты на одной карте\./);
   assert.match(russian, /google-play-badge-ru\.png/);
+});
+
+test("serves static robots and localized sitemap metadata", async () => {
+  const [robotsResponse, sitemapResponse] = await Promise.all([
+    render("/robots.txt"),
+    render("/sitemap.xml"),
+  ]);
+
+  assert.equal(robotsResponse.status, 200);
+  assert.equal(sitemapResponse.status, 200);
+  assert.ok(
+    (await robotsResponse.text()).includes(
+      `Sitemap: ${expectedSiteOrigin}/sitemap.xml`,
+    ),
+  );
+
+  const sitemap = await sitemapResponse.text();
+  assert.ok(sitemap.includes(`<loc>${expectedSiteOrigin}/sr</loc>`));
+  assert.match(sitemap, /hreflang="sr-Latn"/);
+  assert.match(sitemap, /hreflang="x-default"/);
+});
+
+test("pre-renders every public SEO route", async () => {
+  const manifest = JSON.parse(
+    await readFile(
+      new URL(".next/prerender-manifest.json", projectRoot),
+      "utf8",
+    ),
+  );
+
+  for (const pathname of ["/", "/sr", "/ru", "/robots.txt", "/sitemap.xml"]) {
+    assert.ok(manifest.routes[pathname], `${pathname} must be pre-rendered`);
+  }
+
+  assert.equal((await render("/en")).status, 404);
 });
 
 test("keeps required public assets in the repository", async () => {

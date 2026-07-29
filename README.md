@@ -30,6 +30,12 @@ npm run dev
 ```
 
 The local development server is available at `http://localhost:3000`.
+Create `.env.local` only when you want local metadata to use a production-like
+canonical URL:
+
+```bash
+SITE_URL=https://your-production-domain.example
+```
 
 ## Validation
 
@@ -51,6 +57,14 @@ public/
 tests/          Server-rendering checks
 ```
 
+## Rendering and SEO
+
+The English, Serbian, and Russian landing pages are statically generated during
+`next build`. Search engines receive complete HTML without invoking a server
+function on every page view. The project also includes localized metadata,
+canonical and `hreflang` links, JSON-LD, Open Graph data, `robots.txt`, and a
+localized sitemap.
+
 ## Deployment
 
 The project is a standard Next.js application ready for Vercel:
@@ -60,3 +74,9 @@ The project is a standard Next.js application ready for Vercel:
 - Root directory: repository root
 - Node.js version: `22.x`
 - Build and output settings: use Vercel defaults
+
+Vercel's `VERCEL_PROJECT_PRODUCTION_URL` is used automatically for canonical,
+Open Graph, robots, and sitemap URLs. Set `SITE_URL` in Vercel only when a
+specific custom domain should always be canonical. Ensure **Automatically
+expose System Environment Variables** is enabled in Vercel; otherwise define
+`SITE_URL` explicitly.

@@ -1,5 +1,5 @@
-import { TennectHome } from "./components/TennectHome";
-import { buildPageMetadata } from "./seo";
+import { TennectHome } from "../components/TennectHome";
+import { buildPageMetadata } from "../seo";
 
 export const generateMetadata = () => buildPageMetadata("en");
 
