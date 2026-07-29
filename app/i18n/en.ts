@@ -240,7 +240,7 @@ export const en: SiteContent = {
       {
         question: "How is a player’s level determined?",
         answer:
-          "Your level is based on a short self-assessment during registration. Your answers place you in one of six levels, and you can update your level when it no longer reflects your game.",
+          "Your starting level is based on a short self-assessment during registration. It then changes automatically through recorded matches and training sessions. The more consistently you play and log your activity, the sooner the system can recognise and reflect your progress.",
       },
       {
         question: "Which devices support Tennect?",

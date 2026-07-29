@@ -239,7 +239,7 @@ export const sr: SiteContent = {
       {
         question: "Kako se određuje nivo igrača?",
         answer:
-          "Nivo se određuje kratkom samoprocenom tokom registracije. Odgovori te svrstavaju u jedan od šest nivoa, a nivo možeš da promeniš kada više ne odgovara tvojoj igri.",
+          "Početni nivo određuje se kratkom samoprocenom tokom registracije. Nakon toga se automatski menja kroz evidentirane mečeve i treninge. Što više igraš i beležiš aktivnosti, sistem brže može da prepozna i prikaže tvoj napredak.",
       },
       {
         question: "Na kojim uređajima je aplikacija dostupna?",
