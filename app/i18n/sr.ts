@@ -22,7 +22,7 @@ export const sr: SiteContent = {
     howItWorks: "Kako funkcioniše",
     insideApp: "U aplikaciji",
     faq: "Česta pitanja",
-    download: "Preuzmi za iPhone",
+    download: "Preuzmi za iOS",
     menu: "Meni",
   },
   hero: {
@@ -246,7 +246,7 @@ export const sr: SiteContent = {
     title: "Spreman za sledeći meč?",
     copy:
       "Preuzmi Tennect, pronađi igrače svog nivoa i organizuj sledeći meč.",
-    button: "Preuzmi Tennect za iPhone",
+    button: "Preuzmi Tennect za iOS",
   },
   footer: {
     tagline: "Pronađi pravog partnera za igru.",

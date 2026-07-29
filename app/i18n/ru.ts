@@ -22,7 +22,7 @@ export const ru: SiteContent = {
     howItWorks: "Как это работает",
     insideApp: "В приложении",
     faq: "Вопросы",
-    download: "Скачать для iPhone",
+    download: "Скачать для iOS",
     menu: "Меню",
   },
   hero: {
@@ -251,7 +251,7 @@ export const ru: SiteContent = {
     title: "Готовы к следующему матчу?",
     copy:
       "Скачайте Tennect, найдите игроков своего уровня и организуйте следующий матч.",
-    button: "Скачать Tennect для iPhone",
+    button: "Скачать Tennect для iOS",
   },
   footer: {
     tagline: "Найдите подходящего партнёра для игры.",

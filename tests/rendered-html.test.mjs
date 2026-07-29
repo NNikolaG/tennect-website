@@ -106,7 +106,7 @@ test("renders the English Tennect landing page", async () => {
   );
   assert.match(html, /tennect-profile-schedule\.png/);
   assert.doesNotMatch(html, /class="hero-side/);
-  assert.match(html, /Download Tennect for iPhone/);
+  assert.match(html, /Download Tennect for iOS/);
   assert.match(html, /Android version coming soon — get notified\./);
   assert.match(html, /Is Tennect free\?/);
   assert.match(html, /Requires iOS 18\.6|requires iOS 18\.6/);
@@ -128,7 +128,7 @@ test("renders Serbian and Russian localized routes", async () => {
     serbian,
     /Tennect profil igrača sa rasporedom dostupnosti i omiljenim podlogama/,
   );
-  assert.match(serbian, /Preuzmi Tennect za iPhone/);
+  assert.match(serbian, /Preuzmi Tennect za iOS/);
   assert.match(serbian, /Da li je Tennect besplatan\?/);
   assert.doesNotMatch(serbian, /Rani pristup|Prijavi se za novosti|Tennect-a/);
   assert.doesNotMatch(serbian, /google-play-badge-sr\.png/);
@@ -137,7 +137,7 @@ test("renders Serbian and Russian localized routes", async () => {
     russian,
     /Профиль игрока Tennect с расписанием и любимыми покрытиями/,
   );
-  assert.match(russian, /Скачать Tennect для iPhone/);
+  assert.match(russian, /Скачать Tennect для iOS/);
   assert.match(russian, /Tennect бесплатный\?/);
   assert.doesNotMatch(russian, /google-play-badge-ru\.png|Ранний доступ/);
 });

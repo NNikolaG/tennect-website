@@ -22,7 +22,7 @@ export const en: SiteContent = {
     howItWorks: "How it works",
     insideApp: "Inside the app",
     faq: "FAQ",
-    download: "Download for iPhone",
+    download: "Download for iOS",
     menu: "Menu",
   },
   hero: {
@@ -247,7 +247,7 @@ export const en: SiteContent = {
     title: "Ready for your next match?",
     copy:
       "Download Tennect, find players at your level and organise your next match.",
-    button: "Download Tennect for iPhone",
+    button: "Download Tennect for iOS",
   },
   footer: {
     tagline: "Find your perfect match.",
