@@ -30,7 +30,7 @@ export const ru: SiteContent = {
     perfectMatch: "Найдите идеального соперника",
     filters: "Уровень · место · время",
     surfaces: ["ГРУНТ", "ТРАВА", "ХАРД"],
-    everyCourt: "Все корты. На одной карте.",
+    everyCourt: "Все корты на одной карте.",
   },
   hero: {
     eyebrow: "Ваше теннисное сообщество",
@@ -39,6 +39,7 @@ export const ru: SiteContent = {
       "Находите игроков своего уровня, открывайте корты поблизости и организуйте каждый матч в одном месте.",
     explore: "Узнать о Tennect",
     appStoreBadgeAlt: "Загрузить Tennect в App Store",
+    googlePlayBadgeAlt: "Скачать Tennect в Google Play",
     notes: [
       "Для любого уровня",
       "23 языка в приложении",

@@ -30,7 +30,7 @@ export const en: SiteContent = {
     perfectMatch: "Find your perfect match",
     filters: "Level · location · availability",
     surfaces: ["CLAY", "GRASS", "HARD"],
-    everyCourt: "Every court. One map.",
+    everyCourt: "All courts on one map.",
   },
   hero: {
     eyebrow: "Your tennis community",
@@ -39,6 +39,7 @@ export const en: SiteContent = {
       "Find players at your level, discover nearby courts and organise every match in one place.",
     explore: "Explore Tennect",
     appStoreBadgeAlt: "Download Tennect on the App Store",
+    googlePlayBadgeAlt: "Get Tennect on Google Play",
     notes: ["Built for every level", "23 app languages", "One connected game"],
     imageAlt:
       "Tennect app showing a confirmed tennis match between two players",

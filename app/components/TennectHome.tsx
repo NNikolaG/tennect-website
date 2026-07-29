@@ -26,6 +26,7 @@ export function TennectHome({ locale }: { locale: Locale }) {
     locale === "ru"
       ? "/media/app-store-badge-ru.svg"
       : "/media/app-store-badge-en.svg";
+  const googlePlayBadge = `/media/google-play-badge-${locale}.png`;
   const accessHref = earlyAccessHref(content.nav.earlyAccess);
   const questionHref = `mailto:tennect@outlook.com?subject=${encodeURIComponent(
     `Tennect — ${content.faq.ask}`,
@@ -125,11 +126,17 @@ export function TennectHome({ locale }: { locale: Locale }) {
             </div>
             <p className="side-title">{content.side.perfectMatch}</p>
             <p className="side-copy">{content.side.filters}</p>
-            <div className="side-divider" />
             <div className="surface-stack" aria-label={content.aria.surfaces}>
               {content.side.surfaces.map((surface) => (
                 <span key={surface}>{surface}</span>
               ))}
+            </div>
+            <div className="side-divider" />
+            <div className="side-map" aria-hidden="true">
+              <i />
+              <span />
+              <span />
+              <span />
             </div>
             <p className="side-title">{content.side.everyCourt}</p>
           </div>
@@ -161,18 +168,34 @@ export function TennectHome({ locale }: { locale: Locale }) {
               <a className="button button-lime" href="#features">
                 {content.hero.explore} <span aria-hidden="true">↓</span>
               </a>
-              <a
-                className="app-store-link"
-                href={accessHref}
-                aria-label={content.hero.appStoreBadgeAlt}
-              >
-                <img
-                  src={appStoreBadge}
-                  width={120}
-                  height={40}
-                  alt={content.hero.appStoreBadgeAlt}
-                />
-              </a>
+              <div className="store-badges">
+                <a
+                  className="store-badge-link app-store-link"
+                  href="https://apple.co/3RAyuwX"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={content.hero.appStoreBadgeAlt}
+                >
+                  <img
+                    src={appStoreBadge}
+                    width={120}
+                    height={40}
+                    alt={content.hero.appStoreBadgeAlt}
+                  />
+                </a>
+                <a
+                  className="store-badge-link google-play-link"
+                  href={accessHref}
+                  aria-label={content.hero.googlePlayBadgeAlt}
+                >
+                  <img
+                    src={googlePlayBadge}
+                    width={646}
+                    height={250}
+                    alt={content.hero.googlePlayBadgeAlt}
+                  />
+                </a>
+              </div>
             </div>
             <div className="hero-notes">
               {content.hero.notes.map((note) => (

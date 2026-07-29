@@ -30,7 +30,7 @@ export const sr: SiteContent = {
     perfectMatch: "Pronađi idealnog protivnika",
     filters: "Nivo · lokacija · dostupnost",
     surfaces: ["ŠLJAKA", "TRAVA", "TVRDA"],
-    everyCourt: "Svaki teren. Jedna mapa.",
+    everyCourt: "Svi tereni na jednoj mapi.",
   },
   hero: {
     eyebrow: "Tvoja teniska zajednica",
@@ -39,6 +39,7 @@ export const sr: SiteContent = {
       "Pronađi igrače svog nivoa, otkrij terene u blizini i organizuj svaki meč na jednom mestu.",
     explore: "Istraži Tennect",
     appStoreBadgeAlt: "Preuzmi Tennect u App Store-u",
+    googlePlayBadgeAlt: "Preuzmi Tennect na Google Play-u",
     notes: ["Za svaki nivo", "23 jezika u aplikaciji", "Jedna povezana igra"],
     imageAlt:
       "Tennect aplikacija prikazuje potvrđen teniski meč između dva igrača",

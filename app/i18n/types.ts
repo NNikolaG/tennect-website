@@ -62,6 +62,7 @@ export type SiteContent = {
     copy: string;
     explore: string;
     appStoreBadgeAlt: string;
+    googlePlayBadgeAlt: string;
     notes: [string, string, string];
     imageAlt: string;
   };
