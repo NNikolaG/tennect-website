@@ -72,3 +72,13 @@ test("keeps required public and hosting assets in the repository", async () => {
     access(new URL("public/media/google-play-badge-sr.png", projectRoot)),
   ]);
 });
+
+test("centers every shared showcase dialog in the viewport", async () => {
+  const css = await readFile(new URL("app/globals.css", projectRoot), "utf8");
+  const dialogRule = css.match(/\.showcase-dialog\s*\{([^}]*)\}/)?.[1] ?? "";
+
+  assert.match(dialogRule, /position:\s*fixed/);
+  assert.match(dialogRule, /left:\s*50%/);
+  assert.match(dialogRule, /top:\s*50%/);
+  assert.match(dialogRule, /transform:\s*translate\(-50%,\s*-50%\)/);
+});

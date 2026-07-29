@@ -251,7 +251,7 @@ footer nav a:focus-visible::after { transform: scaleX(1);
 }
 .gallery-item figcaption { background: var(--ink); border-radius: 999px 999px 0 0; color: white; margin: 0 auto; padding: 18px; position: relative; text-align: center; width: 88%;
 }
-.showcase-dialog { background: var(--paper); border: 0; border-radius: 28px; box-shadow: 0 32px 90px rgba(4, 22, 17, 0.36); color: var(--ink); inset: 0; margin: auto; max-height: min(720px, calc(100dvh - 64px)); max-width: 900px; overflow: auto; padding: 0; position: fixed; width: calc(100vw - 48px);
+.showcase-dialog { background: var(--paper); border: 0; border-radius: 28px; box-shadow: 0 32px 90px rgba(4, 22, 17, 0.36); color: var(--ink); inset: auto; left: 50%; margin: 0; max-height: min(720px, calc(100dvh - 64px)); max-width: 900px; overflow: auto; overscroll-behavior: contain; padding: 0; position: fixed; top: 50%; transform: translate(-50%, -50%); width: calc(100vw - 48px);
 }
 .showcase-dialog::backdrop { backdrop-filter: blur(9px); background: rgba(4, 22, 17, 0.72);
 }
