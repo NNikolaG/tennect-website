@@ -200,6 +200,16 @@ test("centers every shared showcase dialog in the viewport", async () => {
   assert.match(dialogRule, /transform:\s*translate\(-50%,\s*-50%\)/);
 });
 
+test("keeps desktop header controls at the same height", async () => {
+  const css = await readFile(new URL("app/globals.css", projectRoot), "utf8");
+  const downloadRule = css.match(/\.header-cta\s*\{([^}]*)\}/)?.[1] ?? "";
+  const languageRule =
+    css.match(/\.language-switcher summary\s*\{([^}]*)\}/)?.[1] ?? "";
+
+  assert.match(downloadRule, /height:\s*52px/);
+  assert.match(languageRule, /min-height:\s*52px/);
+});
+
 test("uses only the standard Next.js runtime", async () => {
   const packageJson = JSON.parse(
     await readFile(new URL("package.json", projectRoot), "utf8"),

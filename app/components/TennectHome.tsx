@@ -84,7 +84,7 @@ export function TennectHome({ locale }: { locale: Locale }) {
           <details className="language-switcher">
             <summary aria-label={content.aria.selectLanguage}>
               <span>{content.localeLabel}</span>
-              <b aria-hidden="true">⌄</b>
+              <b aria-hidden="true" />
             </summary>
             <div>
               {locales.map((item) => (

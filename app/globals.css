@@ -34,7 +34,7 @@ footer nav a::after { background: currentColor; bottom: -5px; content: ""; heigh
 footer nav a:hover::after,
 footer nav a:focus-visible::after { transform: scaleX(1);
 }
-.header-cta { align-items: center; background: var(--ink); border-radius: 999px; color: white; display: flex; font-size: 0.78rem; font-weight: 800; gap: 28px; justify-self: end; letter-spacing: 0.05em; padding: 14px 16px 14px 24px; text-transform: uppercase;
+.header-cta { align-items: center; background: var(--ink); border-radius: 999px; color: white; display: flex; font-size: 0.78rem; font-weight: 800; gap: 28px; height: 52px; justify-self: end; letter-spacing: 0.05em; padding: 8px 8px 8px 20px; text-transform: uppercase;
 }
 .header-cta span { align-items: center; background: var(--clay); border-radius: 50%; display: flex; font-size: 1.1rem; height: 36px; justify-content: center; width: 36px;
 }
@@ -46,9 +46,9 @@ footer nav a:focus-visible::after { transform: scaleX(1);
 }
 .language-switcher summary::-webkit-details-marker { display: none;
 }
-.language-switcher summary b { font-size: 0.9rem; transition: transform 180ms ease;
+.language-switcher summary b { border-bottom: 2px solid currentColor; border-right: 2px solid currentColor; display: block; height: 7px; margin: 0; transform: rotate(45deg); transition: transform 180ms ease; width: 7px;
 }
-.language-switcher[open] summary b { transform: rotate(180deg);
+.language-switcher[open] summary b { transform: rotate(225deg);
 }
 .language-switcher > div { background: white; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 16px 40px rgba(8, 39, 31, 0.14); min-width: 170px; padding: 8px; position: absolute; right: 0; top: 60px; z-index: 30;
 }
