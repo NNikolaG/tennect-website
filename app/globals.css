@@ -147,13 +147,18 @@ footer nav a:focus-visible::after { transform: scaleX(1);
 }
 .hero-actions { align-items: center; display: flex; flex-wrap: wrap; gap: 18px; margin-top: 30px;
 }
-.store-badges { align-items: center; display: flex; flex-wrap: wrap; gap: 8px;
+.platform-actions { align-items: center; display: flex; flex-wrap: wrap; gap: 16px; margin-top: 18px;
 }
 .store-badge-link { align-items: center; display: inline-flex; justify-content: center;
 }
 .app-store-link img { height: auto; width: 156px;
 }
-.google-play-link img { height: auto; margin: -10px -12px; width: 180px;
+.android-notice { align-items: center; border-left: 1px solid rgba(255, 255, 255, 0.3); color: rgba(255, 255, 255, 0.82); display: inline-flex; font-size: 0.68rem; font-weight: 700; gap: 9px; letter-spacing: 0.04em; line-height: 1.5; max-width: 250px; padding-left: 16px;
+}
+.android-notice span { color: var(--lime); font-size: 0.55rem;
+}
+.android-notice:hover,
+.android-notice:focus-visible { color: white; text-decoration: underline; text-underline-offset: 4px;
 }
 .button { align-items: center; border-radius: 999px; display: inline-flex; font-size: 0.76rem; font-weight: 800; gap: 24px; justify-content: center; letter-spacing: 0.06em; min-height: 52px; padding: 14px 24px; text-transform: uppercase; transition: transform 180ms ease, background 180ms ease;
 }
@@ -465,11 +470,11 @@ footer nav { display: flex; gap: 24px;
   }
   .hero-actions { align-items: stretch; flex-direction: column;
   }
-  .store-badges { gap: 10px; justify-content: flex-start;
+  .platform-actions { align-items: flex-start; flex-direction: column;
   }
   .app-store-link img { width: 148px;
   }
-  .google-play-link img { width: 171px;
+  .android-notice { border-left: 0; border-top: 1px solid rgba(255, 255, 255, 0.3); max-width: none; padding: 12px 0 0;
   }
   .button { justify-content: space-between;
   }

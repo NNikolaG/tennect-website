@@ -23,24 +23,25 @@ export const sr: SiteContent = {
     howItWorks: "Kako funkcioniše",
     insideApp: "U aplikaciji",
     faq: "Česta pitanja",
-    earlyAccess: "Rani pristup",
+    download: "Preuzmi za iPhone",
     menu: "Meni",
   },
   side: {
-    perfectMatch: "Pronađi idealnog protivnika",
+    perfectMatch: "Pronađi igrača za meč ili trening",
     filters: "Nivo · lokacija · dostupnost",
     surfaces: ["ŠLJAKA", "TRAVA", "TVRDA"],
-    everyCourt: "Svi tereni na jednoj mapi.",
+    everyCourt: "Teniski tereni u blizini na jednoj mapi.",
   },
   hero: {
     eyebrow: "Tvoja teniska zajednica",
     title: ["Sledeći", "teniski meč", "počinje ovde."],
     copy:
       "Pronađi igrače svog nivoa, otkrij terene u blizini i organizuj svaki meč na jednom mestu.",
-    explore: "Istraži Tennect",
+    download: "Preuzmi za iPhone",
+    explore: "Pogledaj funkcije",
+    androidSoon: "Android verzija uskoro — prijavi se za obaveštenje.",
     appStoreBadgeAlt: "Preuzmi Tennect u App Store-u",
-    googlePlayBadgeAlt: "Preuzmi Tennect na Google Play-u",
-    notes: ["Za svaki nivo", "23 jezika u aplikaciji", "Jedna povezana igra"],
+    notes: ["Za svaki nivo", "Dostupno na 23 jezika", "Jedna povezana igra"],
     imageAlt:
       "Tennect aplikacija prikazuje potvrđen teniski meč između dva igrača",
   },
@@ -105,19 +106,19 @@ export const sr: SiteContent = {
       {
         title: "Pronađi pravog igrača i teren",
         copy:
-          "Pretraži igrače u blizini, uporedi preference i izaberi lokalni teren.",
+          "Pretraži igrače u blizini, uporedi nivo igre, dostupnost i omiljene podloge, pa izaberi lokalni teren.",
       },
       {
         title: "Igraj, beleži rezultat i napreduj",
         copy:
-          "Potvrdi meč, zabeleži rezultat i pretvori svaku igru u koristan napredak.",
+          "Potvrdi meč, zabeleži rezultat i prati napredak iz meča u meč.",
       },
     ],
   },
   gallery: {
-    kicker: "Unutar Tennect-a",
-    title: "Jedna aplikacija za ceo tvoj teniski život.",
-    swipe: "Prevuci i istraži iskustvo →",
+    kicker: "U aplikaciji Tennect",
+    title: "Sve za tvoj tenis u jednoj aplikaciji.",
+    swipe: "Prevuci i pogledaj funkcije aplikacije →",
     items: [
       {
         label: "Podesi dostupnost",
@@ -190,7 +191,7 @@ export const sr: SiteContent = {
       "Pronađi teniske partnere",
       "Otkrij teniske terene",
       "Zakaži mečeve",
-      "Vodi teniski rezultat",
+      "Beleži rezultate",
       "Uporedi rang-liste",
       "Prati teniske vesti",
     ],
@@ -206,7 +207,7 @@ export const sr: SiteContent = {
           "Tennect omogućava pretragu igrača po lokaciji, nivou igre, omiljenoj podlozi i dostupnosti, pa lakše možeš pronaći odgovarajućeg teniskog partnera u blizini.",
       },
       {
-        question: "Mogu li preko Tennect-a da pronađem teniske terene?",
+        question: "Mogu li u aplikaciji Tennect da pronađem teniske terene?",
         answer:
           "Da. Pretraži terene u listi ili na mapi, pogledaj ocene i radno vreme, sačuvaj favorite i otvori kontakt ili lokaciju terena.",
       },
@@ -225,17 +226,37 @@ export const sr: SiteContent = {
         answer:
           "Ovaj sajt je trenutno dostupan na engleskom, srpskom i ruskom, dok Tennect aplikacija uključuje interfejs na 23 jezika.",
       },
+      {
+        question: "Da li je Tennect besplatan?",
+        answer:
+          "Da. Tennect je besplatan za preuzimanje i omogućava kreiranje profila, pretragu igrača i pronalaženje terena. Tennect Pro otključava slanje zahteva za mečeve i treninge, rang-liste i naprednu statistiku; cena i period pretplate prikazani su u aplikaciji pre kupovine.",
+      },
+      {
+        question: "Da li Tennect rezerviše teren?",
+        answer:
+          "Ne direktno. Tennect ti pomaže da pronađeš teren i proveriš lokaciju, ocene, radno vreme i kontakt podatke. Rezervaciju trenutno obavljaš direktno sa klubom ili upravljačem terena.",
+      },
+      {
+        question: "Kako se određuje nivo igrača?",
+        answer:
+          "Nivo se određuje kratkom samoprocenom tokom registracije. Odgovori te svrstavaju u jedan od šest nivoa, a nivo možeš da promeniš kada više ne odgovara tvojoj igri.",
+      },
+      {
+        question: "Na kojim uređajima je aplikacija dostupna?",
+        answer:
+          "Tennect je trenutno dostupan za iPhone i zahteva iOS 18.6 ili noviji. Android verzija je u pripremi; prijavi se za obaveštenje da saznaš kada bude objavljena.",
+      },
     ],
   },
   finalCta: {
-    kicker: "Pronađi idealnog protivnika",
-    title: "Spremni kada i ti.",
+    kicker: "Pronađi igrača za meč ili trening",
+    title: "Spreman za sledeći meč?",
     copy:
-      "Budi među prvim igračima koji će saznati kada Tennect bude spreman u tvom gradu.",
-    button: "Prijavi se za novosti",
+      "Preuzmi Tennect, pronađi igrače svog nivoa i organizuj sledeći meč.",
+    button: "Preuzmi Tennect za iPhone",
   },
   footer: {
-    tagline: "Pronađi idealnog protivnika.",
+    tagline: "Pronađi pravog partnera za igru.",
     contact: "Kontakt",
     privacy: "Privatnost",
     terms: "Uslovi",
@@ -243,7 +264,7 @@ export const sr: SiteContent = {
   metadata: {
     title: "Tennect — Pronađi tenisere i terene u blizini",
     description:
-      "Pronađi tenisere u blizini, otkrij lokalne terene, organizuj mečeve, vodi rezultat i napreduj na rang-listi uz Tennect.",
+      "Pronađi tenisere svog nivoa, otkrij terene u blizini, organizuj mečeve i prati rezultate uz Tennect aplikaciju.",
     ogTitle: "Tennect — Tvoj sledeći teniski meč počinje ovde.",
     ogDescription:
       "Pronađi igrače i terene, zakaži mečeve i prati svoj teniski napredak u jednoj aplikaciji.",

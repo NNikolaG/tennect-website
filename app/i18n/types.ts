@@ -47,7 +47,7 @@ export type SiteContent = {
     howItWorks: string;
     insideApp: string;
     faq: string;
-    earlyAccess: string;
+    download: string;
     menu: string;
   };
   side: {
@@ -60,9 +60,10 @@ export type SiteContent = {
     eyebrow: string;
     title: [string, string, string];
     copy: string;
+    download: string;
     explore: string;
+    androidSoon: string;
     appStoreBadgeAlt: string;
-    googlePlayBadgeAlt: string;
     notes: [string, string, string];
     imageAlt: string;
   };
@@ -106,7 +107,7 @@ export type SiteContent = {
     kicker: string;
     title: string;
     ask: string;
-    items: [FaqContent, FaqContent, FaqContent, FaqContent, FaqContent];
+    items: FaqContent[];
   };
   finalCta: {
     kicker: string;

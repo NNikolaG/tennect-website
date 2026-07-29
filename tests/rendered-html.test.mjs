@@ -95,10 +95,19 @@ test("renders the English Tennect landing page", async () => {
     html,
     /<title>Tennect — Find Tennis Players &amp; Courts Near You<\/title>/,
   );
+  assert.match(
+    html,
+    /Find tennis players at your level, discover nearby courts, organise matches and track your progress with Tennect\./,
+  );
   assert.match(html, /Your next/);
-  assert.match(html, /All courts on one map\./);
+  assert.match(html, /Nearby courts on one map\./);
+  assert.match(html, /Download Tennect for iPhone/);
+  assert.match(html, /Android version coming soon — get notified\./);
+  assert.match(html, /Is Tennect free\?/);
+  assert.match(html, /Requires iOS 18\.6|requires iOS 18\.6/);
   assert.match(html, /https:\/\/apple\.co\/3RAyuwX/);
-  assert.match(html, /google-play-badge-en\.png/);
+  assert.doesNotMatch(html, /google-play-badge-en\.png/);
+  assert.doesNotMatch(html, /Get early access|Get launch updates/);
   assert.equal((html.match(/aria-haspopup="dialog"/g) ?? []).length, 8);
   assert.doesNotMatch(html, /codex-preview|Building your site/);
 });
@@ -110,11 +119,16 @@ test("renders Serbian and Russian localized routes", async () => {
   ]);
 
   assert.match(serbian, /<html lang="sr-Latn"/);
-  assert.match(serbian, /Svi tereni na jednoj mapi\./);
-  assert.match(serbian, /google-play-badge-sr\.png/);
+  assert.match(serbian, /Teniski tereni u blizini na jednoj mapi\./);
+  assert.match(serbian, /Preuzmi Tennect za iPhone/);
+  assert.match(serbian, /Da li je Tennect besplatan\?/);
+  assert.doesNotMatch(serbian, /Rani pristup|Prijavi se za novosti|Tennect-a/);
+  assert.doesNotMatch(serbian, /google-play-badge-sr\.png/);
   assert.match(russian, /<html lang="ru"/);
-  assert.match(russian, /Все корты на одной карте\./);
-  assert.match(russian, /google-play-badge-ru\.png/);
+  assert.match(russian, /Ближайшие корты на одной карте\./);
+  assert.match(russian, /Скачать Tennect для iPhone/);
+  assert.match(russian, /Tennect бесплатный\?/);
+  assert.doesNotMatch(russian, /google-play-badge-ru\.png|Ранний доступ/);
 });
 
 test("serves static robots and localized sitemap metadata", async () => {
@@ -157,7 +171,7 @@ test("keeps required public assets in the repository", async () => {
     access(new URL("public/og.png", projectRoot)),
     access(new URL("public/media/tennect-icon.png", projectRoot)),
     access(new URL("public/media/app-store-badge-en.svg", projectRoot)),
-    access(new URL("public/media/google-play-badge-sr.png", projectRoot)),
+    access(new URL("public/media/app-store-badge-ru.svg", projectRoot)),
   ]);
 });
 

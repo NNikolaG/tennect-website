@@ -10,12 +10,13 @@ import { GalleryShowcase } from "./GalleryShowcase";
 
 const legalBase =
   "https://whwhvvfbxaoeezbtqhga.supabase.co/storage/v1/object/public/legal";
+const appStoreUrl = "https://apple.co/3RAyuwX";
 
 function legalLocale(locale: Locale) {
   return locale === "sr" ? "sr-Latn" : locale;
 }
 
-function earlyAccessHref(label: string) {
+function notificationHref(label: string) {
   return `mailto:tennect@outlook.com?subject=${encodeURIComponent(
     `Tennect — ${label}`,
   )}`;
@@ -27,8 +28,7 @@ export function TennectHome({ locale }: { locale: Locale }) {
     locale === "ru"
       ? "/media/app-store-badge-ru.svg"
       : "/media/app-store-badge-en.svg";
-  const googlePlayBadge = `/media/google-play-badge-${locale}.png`;
-  const accessHref = earlyAccessHref(content.nav.earlyAccess);
+  const androidNotificationHref = notificationHref(content.hero.androidSoon);
   const questionHref = `mailto:tennect@outlook.com?subject=${encodeURIComponent(
     `Tennect — ${content.faq.ask}`,
   )}`;
@@ -42,6 +42,12 @@ export function TennectHome({ locale }: { locale: Locale }) {
     inLanguage: content.htmlLang,
     description: content.schema.description,
     featureList: content.schema.features,
+    installUrl: appStoreUrl,
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "EUR",
+    },
   };
   const faqSchema = {
     "@context": "https://schema.org",
@@ -101,8 +107,13 @@ export function TennectHome({ locale }: { locale: Locale }) {
               ))}
             </div>
           </details>
-          <a className="header-cta" href={accessHref}>
-            {content.nav.earlyAccess} <span aria-hidden="true">↗</span>
+          <a
+            className="header-cta"
+            href={appStoreUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {content.nav.download} <span aria-hidden="true">↗</span>
           </a>
           <details className="mobile-menu">
             <summary aria-label={content.aria.openNav}>
@@ -166,37 +177,40 @@ export function TennectHome({ locale }: { locale: Locale }) {
             </h1>
             <p className="hero-copy">{content.hero.copy}</p>
             <div className="hero-actions">
-              <a className="button button-lime" href="#features">
+              <a
+                className="button button-lime"
+                href={appStoreUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {content.hero.download} <span aria-hidden="true">↗</span>
+              </a>
+              <a className="button button-outline" href="#features">
                 {content.hero.explore} <span aria-hidden="true">↓</span>
               </a>
-              <div className="store-badges">
-                <a
-                  className="store-badge-link app-store-link"
-                  href="https://apple.co/3RAyuwX"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={content.hero.appStoreBadgeAlt}
-                >
-                  <Image
-                    src={appStoreBadge}
-                    width={120}
-                    height={40}
-                    alt={content.hero.appStoreBadgeAlt}
-                  />
-                </a>
-                <a
-                  className="store-badge-link google-play-link"
-                  href={accessHref}
-                  aria-label={content.hero.googlePlayBadgeAlt}
-                >
-                  <Image
-                    src={googlePlayBadge}
-                    width={646}
-                    height={250}
-                    alt={content.hero.googlePlayBadgeAlt}
-                  />
-                </a>
-              </div>
+            </div>
+            <div className="platform-actions">
+              <a
+                className="store-badge-link app-store-link"
+                href={appStoreUrl}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={content.hero.appStoreBadgeAlt}
+              >
+                <Image
+                  src={appStoreBadge}
+                  width={120}
+                  height={40}
+                  alt={content.hero.appStoreBadgeAlt}
+                />
+              </a>
+              <a
+                className="android-notice"
+                href={androidNotificationHref}
+              >
+                <span aria-hidden="true">●</span>
+                {content.hero.androidSoon}
+              </a>
             </div>
             <div className="hero-notes">
               {content.hero.notes.map((note) => (
@@ -292,7 +306,12 @@ export function TennectHome({ locale }: { locale: Locale }) {
           <p className="eyebrow">{content.finalCta.kicker}</p>
           <h2>{content.finalCta.title}</h2>
           <p>{content.finalCta.copy}</p>
-          <a className="button button-dark" href={accessHref}>
+          <a
+            className="button button-dark"
+            href={appStoreUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
             {content.finalCta.button} <span aria-hidden="true">↗</span>
           </a>
         </section>

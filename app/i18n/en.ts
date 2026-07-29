@@ -23,24 +23,25 @@ export const en: SiteContent = {
     howItWorks: "How it works",
     insideApp: "Inside the app",
     faq: "FAQ",
-    earlyAccess: "Get early access",
+    download: "Download for iPhone",
     menu: "Menu",
   },
   side: {
     perfectMatch: "Find your perfect match",
     filters: "Level · location · availability",
     surfaces: ["CLAY", "GRASS", "HARD"],
-    everyCourt: "All courts on one map.",
+    everyCourt: "Nearby courts on one map.",
   },
   hero: {
     eyebrow: "Your tennis community",
     title: ["Your next", "tennis match", "starts here."],
     copy:
       "Find players at your level, discover nearby courts and organise every match in one place.",
-    explore: "Explore Tennect",
+    download: "Download for iPhone",
+    explore: "See how it works",
+    androidSoon: "Android version coming soon — get notified.",
     appStoreBadgeAlt: "Download Tennect on the App Store",
-    googlePlayBadgeAlt: "Get Tennect on Google Play",
-    notes: ["Built for every level", "23 app languages", "One connected game"],
+    notes: ["Built for every level", "Available in 23 languages", "One connected game"],
     imageAlt:
       "Tennect app showing a confirmed tennis match between two players",
   },
@@ -226,14 +227,34 @@ export const en: SiteContent = {
         answer:
           "This website is currently available in English, Serbian and Russian, while the Tennect app includes 23 interface languages.",
       },
+      {
+        question: "Is Tennect free?",
+        answer:
+          "Yes. Tennect is free to download and lets you create a profile, discover players and find nearby courts. Tennect Pro unlocks match and training requests, rankings and advanced statistics; pricing and subscription periods are shown in the app before purchase.",
+      },
+      {
+        question: "Does Tennect book a tennis court?",
+        answer:
+          "Not directly. Tennect helps you discover courts and check their location, ratings, opening hours and contact details. Court bookings are currently arranged directly with the club or court operator.",
+      },
+      {
+        question: "How is a player’s level determined?",
+        answer:
+          "Your level is based on a short self-assessment during registration. Your answers place you in one of six levels, and you can update your level when it no longer reflects your game.",
+      },
+      {
+        question: "Which devices support Tennect?",
+        answer:
+          "Tennect is currently available for iPhone and requires iOS 18.6 or later. The Android version is in development; sign up for a notification when it launches.",
+      },
     ],
   },
   finalCta: {
     kicker: "Find your perfect match",
-    title: "Ready when you are.",
+    title: "Ready for your next match?",
     copy:
-      "Be among the first players to know when Tennect is ready in your city.",
-    button: "Get launch updates",
+      "Download Tennect, find players at your level and organise your next match.",
+    button: "Download Tennect for iPhone",
   },
   footer: {
     tagline: "Find your perfect match.",
@@ -244,7 +265,7 @@ export const en: SiteContent = {
   metadata: {
     title: "Tennect — Find Tennis Players & Courts Near You",
     description:
-      "Find tennis players near you, discover local courts, organise matches, track scores and climb the rankings with Tennect.",
+      "Find tennis players at your level, discover nearby courts, organise matches and track your progress with Tennect.",
     ogTitle: "Tennect — Your next tennis match starts here.",
     ogDescription:
       "Find players, discover courts, schedule matches and track your tennis in one connected app.",
