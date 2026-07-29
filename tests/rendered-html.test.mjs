@@ -107,7 +107,9 @@ test("renders the English Tennect landing page", async () => {
   assert.match(html, /tennect-profile-schedule\.png/);
   assert.doesNotMatch(html, /class="hero-side/);
   assert.match(html, /Download Tennect for iOS/);
-  assert.match(html, /Android version coming soon — get notified\./);
+  assert.match(html, /Android version coming soon/);
+  assert.match(html, /class="android-soon-card"/);
+  assert.match(html, /class="button button-lime feature-cta"/);
   assert.match(html, /Is Tennect free\?/);
   assert.match(html, /Requires iOS 18\.6|requires iOS 18\.6/);
   assert.match(html, /https:\/\/apple\.co\/3RAyuwX/);

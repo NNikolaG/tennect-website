@@ -32,7 +32,7 @@ export const ru: SiteContent = {
       "Находите игроков своего уровня, открывайте корты поблизости и организуйте каждый матч в одном месте.",
     download: "Скачать",
     explore: "Посмотреть возможности",
-    androidSoon: "Версия для Android скоро — сообщить о запуске.",
+    androidSoon: "Версия для Android скоро",
     appStoreBadgeAlt: "Загрузить Tennect в App Store",
     notes: [
       "Для любого уровня",

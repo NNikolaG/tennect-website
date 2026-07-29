@@ -16,19 +16,12 @@ function legalLocale(locale: Locale) {
   return locale === "sr" ? "sr-Latn" : locale;
 }
 
-function notificationHref(label: string) {
-  return `mailto:tennect@outlook.com?subject=${encodeURIComponent(
-    `Tennect — ${label}`,
-  )}`;
-}
-
 export function TennectHome({ locale }: { locale: Locale }) {
   const content = getContent(locale);
   const appStoreBadge =
     locale === "ru"
       ? "/media/app-store-badge-ru.svg"
       : "/media/app-store-badge-en.svg";
-  const androidNotificationHref = notificationHref(content.hero.androidSoon);
   const questionHref = `mailto:tennect@outlook.com?subject=${encodeURIComponent(
     `Tennect — ${content.faq.ask}`,
   )}`;
@@ -158,32 +151,31 @@ export function TennectHome({ locale }: { locale: Locale }) {
             <div className="hero-actions">
               <div className="download-action">
                 <span className="download-label">{content.hero.download}</span>
-                <a
-                  className="store-badge-link app-store-link"
-                  href={appStoreUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={content.hero.appStoreBadgeAlt}
-                >
-                  <Image
-                    src={appStoreBadge}
-                    width={120}
-                    height={40}
-                    alt={content.hero.appStoreBadgeAlt}
-                  />
-                </a>
+                <div className="store-options">
+                  <a
+                    className="store-badge-link app-store-link"
+                    href={appStoreUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={content.hero.appStoreBadgeAlt}
+                  >
+                    <Image
+                      src={appStoreBadge}
+                      width={120}
+                      height={40}
+                      alt={content.hero.appStoreBadgeAlt}
+                    />
+                  </a>
+                  <div className="android-soon-card">
+                    <span aria-hidden="true">●</span>
+                    {content.hero.androidSoon}
+                  </div>
+                </div>
               </div>
-              <a className="button button-outline" href="#features">
-                {content.hero.explore} <span aria-hidden="true">↓</span>
-              </a>
             </div>
             <div className="platform-actions">
-              <a
-                className="android-notice"
-                href={androidNotificationHref}
-              >
-                <span aria-hidden="true">●</span>
-                {content.hero.androidSoon}
+              <a className="button button-lime feature-cta" href="#features">
+                {content.hero.explore} <span aria-hidden="true">↓</span>
               </a>
             </div>
             <div className="hero-notes">

@@ -32,7 +32,7 @@ export const sr: SiteContent = {
       "Pronađi igrače svog nivoa, otkrij terene u blizini i organizuj svaki meč na jednom mestu.",
     download: "Preuzmi",
     explore: "Pogledaj funkcije",
-    androidSoon: "Android verzija uskoro — prijavi se za obaveštenje.",
+    androidSoon: "Android verzija uskoro",
     appStoreBadgeAlt: "Preuzmi Tennect u App Store-u",
     notes: ["Za svaki nivo", "Dostupno na 23 jezika", "Jedna povezana igra"],
     imageAlt:

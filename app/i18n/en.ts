@@ -32,7 +32,7 @@ export const en: SiteContent = {
       "Find players at your level, discover nearby courts and organise every match in one place.",
     download: "Download",
     explore: "See how it works",
-    androidSoon: "Android version coming soon — get notified.",
+    androidSoon: "Android version coming soon",
     appStoreBadgeAlt: "Download Tennect on the App Store",
     notes: ["Built for every level", "Available in 23 languages", "One connected game"],
     imageAlt:
