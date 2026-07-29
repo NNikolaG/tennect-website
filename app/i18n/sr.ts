@@ -10,8 +10,7 @@ export const sr: SiteContent = {
     mobileNav: "Mobilna navigacija",
     openNav: "Otvori navigaciju",
     selectLanguage: "Izaberi jezik",
-    surfaces: "Vrste teniskih podloga",
-    matchPreview: "Prikaz Tennect meča",
+    profilePreview: "Prikaz Tennect profila i dostupnosti",
     features: "Tennect funkcije",
     seoUses: "Načini korišćenja Tennect aplikacije",
     legalNav: "Pravni dokumenti i kontakt",
@@ -26,24 +25,18 @@ export const sr: SiteContent = {
     download: "Preuzmi za iPhone",
     menu: "Meni",
   },
-  side: {
-    perfectMatch: "Pronađi igrača za meč ili trening",
-    filters: "Nivo · lokacija · dostupnost",
-    surfaces: ["ŠLJAKA", "TRAVA", "TVRDA"],
-    everyCourt: "Teniski tereni u blizini na jednoj mapi.",
-  },
   hero: {
     eyebrow: "Tvoja teniska zajednica",
     title: ["Sledeći", "teniski meč", "počinje ovde."],
     copy:
       "Pronađi igrače svog nivoa, otkrij terene u blizini i organizuj svaki meč na jednom mestu.",
-    download: "Preuzmi za iPhone",
+    download: "Preuzmi",
     explore: "Pogledaj funkcije",
     androidSoon: "Android verzija uskoro — prijavi se za obaveštenje.",
     appStoreBadgeAlt: "Preuzmi Tennect u App Store-u",
     notes: ["Za svaki nivo", "Dostupno na 23 jezika", "Jedna povezana igra"],
     imageAlt:
-      "Tennect aplikacija prikazuje potvrđen teniski meč između dva igrača",
+      "Tennect profil igrača sa rasporedom dostupnosti i omiljenim podlogama",
   },
   intro: {
     kicker: "Tenis, povezan.",

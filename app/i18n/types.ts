@@ -34,8 +34,7 @@ export type SiteContent = {
     mobileNav: string;
     openNav: string;
     selectLanguage: string;
-    surfaces: string;
-    matchPreview: string;
+    profilePreview: string;
     features: string;
     seoUses: string;
     legalNav: string;
@@ -49,12 +48,6 @@ export type SiteContent = {
     faq: string;
     download: string;
     menu: string;
-  };
-  side: {
-    perfectMatch: string;
-    filters: string;
-    surfaces: [string, string, string];
-    everyCourt: string;
   };
   hero: {
     eyebrow: string;

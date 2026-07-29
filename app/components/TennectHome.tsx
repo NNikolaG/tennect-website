@@ -132,31 +132,10 @@ export function TennectHome({ locale }: { locale: Locale }) {
       <main id="top">
         <section className="hero" aria-labelledby="hero-title">
           <div className="court-lines" aria-hidden="true" />
-          <div className="hero-side hero-side-left">
-            <div className="orbit-ball" aria-hidden="true">
-              <span />
-            </div>
-            <p className="side-title">{content.side.perfectMatch}</p>
-            <p className="side-copy">{content.side.filters}</p>
-            <div className="surface-stack" aria-label={content.aria.surfaces}>
-              {content.side.surfaces.map((surface) => (
-                <span key={surface}>{surface}</span>
-              ))}
-            </div>
-            <div className="side-divider" />
-            <div className="side-map" aria-hidden="true">
-              <i />
-              <span />
-              <span />
-              <span />
-            </div>
-            <p className="side-title">{content.side.everyCourt}</p>
-          </div>
-
-          <div className="hero-phone" aria-label={content.aria.matchPreview}>
+          <div className="hero-phone" aria-label={content.aria.profilePreview}>
             <div className="phone-speaker" aria-hidden="true" />
             <Image
-              src="/media/tennect-match-preview.png"
+              src="/media/tennect-profile-schedule.png"
               width={1260}
               height={2736}
               alt={content.hero.imageAlt}
@@ -177,33 +156,28 @@ export function TennectHome({ locale }: { locale: Locale }) {
             </h1>
             <p className="hero-copy">{content.hero.copy}</p>
             <div className="hero-actions">
-              <a
-                className="button button-lime"
-                href={appStoreUrl}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {content.hero.download} <span aria-hidden="true">↗</span>
-              </a>
+              <div className="download-action">
+                <span className="download-label">{content.hero.download}</span>
+                <a
+                  className="store-badge-link app-store-link"
+                  href={appStoreUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={content.hero.appStoreBadgeAlt}
+                >
+                  <Image
+                    src={appStoreBadge}
+                    width={120}
+                    height={40}
+                    alt={content.hero.appStoreBadgeAlt}
+                  />
+                </a>
+              </div>
               <a className="button button-outline" href="#features">
                 {content.hero.explore} <span aria-hidden="true">↓</span>
               </a>
             </div>
             <div className="platform-actions">
-              <a
-                className="store-badge-link app-store-link"
-                href={appStoreUrl}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={content.hero.appStoreBadgeAlt}
-              >
-                <Image
-                  src={appStoreBadge}
-                  width={120}
-                  height={40}
-                  alt={content.hero.appStoreBadgeAlt}
-                />
-              </a>
               <a
                 className="android-notice"
                 href={androidNotificationHref}

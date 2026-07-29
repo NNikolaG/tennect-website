@@ -100,7 +100,12 @@ test("renders the English Tennect landing page", async () => {
     /Find tennis players at your level, discover nearby courts, organise matches and track your progress with Tennect\./,
   );
   assert.match(html, /Your next/);
-  assert.match(html, /Nearby courts on one map\./);
+  assert.match(
+    html,
+    /Tennect player profile with availability schedule and preferred court surfaces/,
+  );
+  assert.match(html, /tennect-profile-schedule\.png/);
+  assert.doesNotMatch(html, /class="hero-side/);
   assert.match(html, /Download Tennect for iPhone/);
   assert.match(html, /Android version coming soon — get notified\./);
   assert.match(html, /Is Tennect free\?/);
@@ -119,13 +124,19 @@ test("renders Serbian and Russian localized routes", async () => {
   ]);
 
   assert.match(serbian, /<html lang="sr-Latn"/);
-  assert.match(serbian, /Teniski tereni u blizini na jednoj mapi\./);
+  assert.match(
+    serbian,
+    /Tennect profil igrača sa rasporedom dostupnosti i omiljenim podlogama/,
+  );
   assert.match(serbian, /Preuzmi Tennect za iPhone/);
   assert.match(serbian, /Da li je Tennect besplatan\?/);
   assert.doesNotMatch(serbian, /Rani pristup|Prijavi se za novosti|Tennect-a/);
   assert.doesNotMatch(serbian, /google-play-badge-sr\.png/);
   assert.match(russian, /<html lang="ru"/);
-  assert.match(russian, /Ближайшие корты на одной карте\./);
+  assert.match(
+    russian,
+    /Профиль игрока Tennect с расписанием и любимыми покрытиями/,
+  );
   assert.match(russian, /Скачать Tennect для iPhone/);
   assert.match(russian, /Tennect бесплатный\?/);
   assert.doesNotMatch(russian, /google-play-badge-ru\.png|Ранний доступ/);
@@ -170,6 +181,7 @@ test("keeps required public assets in the repository", async () => {
   await Promise.all([
     access(new URL("public/og.png", projectRoot)),
     access(new URL("public/media/tennect-icon.png", projectRoot)),
+    access(new URL("public/media/tennect-profile-schedule.png", projectRoot)),
     access(new URL("public/media/app-store-badge-en.svg", projectRoot)),
     access(new URL("public/media/app-store-badge-ru.svg", projectRoot)),
   ]);

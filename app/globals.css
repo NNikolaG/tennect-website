@@ -62,9 +62,9 @@ footer nav a:focus-visible::after { transform: scaleX(1);
 }
 .mobile-menu { display: none;
 }
-.hero { background: var(--clay); border-radius: 34px; color: white; display: grid; grid-template-columns: minmax(230px, 0.7fr) minmax(280px, 0.92fr) minmax(460px, 1.5fr); min-height: 720px; margin: 0 24px; overflow: hidden; position: relative;
+.hero { background: var(--clay); border-radius: 34px; color: white; display: grid; grid-template-columns: minmax(320px, 0.9fr) minmax(520px, 1.4fr); min-height: 720px; margin: 0 24px; overflow: hidden; position: relative;
 }
-.court-lines { border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 50%; height: 570px; left: 31%; position: absolute; top: 68px; transform: translateX(-50%); width: 570px;
+.court-lines { border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 50%; height: 570px; left: 24%; position: absolute; top: 68px; transform: translateX(-50%); width: 570px;
 }
 .court-lines::before,
 .court-lines::after { background: rgba(255, 255, 255, 0.1); content: ""; left: 50%; position: absolute; top: -100px;
@@ -73,41 +73,9 @@ footer nav a:focus-visible::after { transform: scaleX(1);
 }
 .court-lines::after { height: 1px; left: -120px; top: 50%; width: 810px;
 }
-.hero-side { align-items: center; border-right: 1px solid rgba(255, 255, 255, 0.18); display: flex; flex-direction: column; justify-content: center; padding: 42px 24px; position: relative; text-align: center; z-index: 2;
-}
-.orbit-ball { border: 2px solid rgba(255, 255, 255, 0.7); border-bottom-color: transparent; border-radius: 50% 50% 0 0; height: 64px; margin-bottom: 15px; position: relative; width: 120px;
-}
-.orbit-ball span,
 .final-ball { background: var(--lime); border-radius: 50%; box-shadow: inset -8px -8px 0 rgba(11, 47, 37, 0.08);
 }
-.orbit-ball span { height: 58px; left: 30px; position: absolute; top: 24px; width: 58px;
-}
-.orbit-ball span::after,
 .final-ball::after { border: 2px solid rgba(11, 47, 37, 0.36); border-left-color: transparent; border-radius: 50%; content: ""; inset: 8px; position: absolute; transform: rotate(35deg);
-}
-.side-title { font-family: var(--font-display), sans-serif; font-size: 1.05rem; font-weight: 700; letter-spacing: 0.03em; line-height: 1.25; margin: 18px 0 0; max-width: 210px; text-transform: uppercase;
-}
-.side-copy { color: rgba(255, 255, 255, 0.7); font-size: 0.75rem; line-height: 1.6; margin: 0; text-transform: uppercase;
-}
-.side-divider { background: rgba(255, 255, 255, 0.2); height: 1px; margin: 28px 0 24px; width: 100%;
-}
-.surface-stack { display: flex; gap: 6px; margin-top: 22px; width: 100%;
-}
-.surface-stack span { border: 1px solid rgba(255, 255, 255, 0.5); border-radius: 999px; flex: 1; font-size: 0.61rem; font-weight: 800; letter-spacing: 0.05em; padding: 8px 5px;
-}
-.surface-stack span:first-child { background: var(--lime); border-color: var(--lime); color: var(--ink);
-}
-.side-map { background-color: rgba(255, 255, 255, 0.05); background-image: linear-gradient(32deg, transparent 45%, rgba(255, 255, 255, 0.16) 46%, rgba(255, 255, 255, 0.16) 47%, transparent 48%), linear-gradient(90deg, transparent 49%, rgba(255, 255, 255, 0.12) 50%, transparent 51%); border: 1px solid rgba(255, 255, 255, 0.35); border-radius: 18px; height: 92px; position: relative; width: 172px;
-}
-.side-map i { border: 1px solid rgba(255, 255, 255, 0.38); border-radius: 10px; inset: 14px 28px; position: absolute;
-}
-.side-map span { background: var(--lime); border: 3px solid white; border-radius: 50% 50% 50% 0; box-shadow: 0 4px 12px rgba(8, 39, 31, 0.25); height: 17px; position: absolute; transform: rotate(-45deg); width: 17px;
-}
-.side-map span:nth-of-type(1) { left: 32px; top: 24px;
-}
-.side-map span:nth-of-type(2) { right: 42px; top: 18px;
-}
-.side-map span:nth-of-type(3) { bottom: 18px; left: 82px;
 }
 .hero-phone { align-self: end; background: var(--forest-deep); border: 8px solid var(--forest-deep); border-bottom: 0; border-radius: 48px 48px 0 0; box-shadow: 0 28px 70px rgba(53, 17, 5, 0.32); justify-self: center; max-height: 640px; overflow: hidden; position: relative; width: min(92%, 318px); z-index: 3;
 }
@@ -133,7 +101,7 @@ footer nav a:focus-visible::after { transform: scaleX(1);
 .app-gallery h2,
 .seo-band h2,
 .faq h2,
-.final-cta h2 { font-family: var(--font-display), sans-serif; font-weight: 600; letter-spacing: -0.035em; line-height: 0.88; margin: 0; text-transform: uppercase;
+.final-cta h2 { font-family: var(--font-display), sans-serif; font-weight: 600; letter-spacing: -0.035em; line-height: 0.98; margin: 0; text-transform: uppercase;
 }
 .hero h1 { font-size: clamp(4.5rem, 7.4vw, 8.4rem); margin: 28px 0;
 }
@@ -145,15 +113,19 @@ footer nav a:focus-visible::after { transform: scaleX(1);
 }
 .hero-copy { color: rgba(255, 255, 255, 0.84); font-size: clamp(1rem, 1.3vw, 1.18rem); line-height: 1.7; max-width: 560px;
 }
-.hero-actions { align-items: center; display: flex; flex-wrap: wrap; gap: 18px; margin-top: 30px;
+.hero-actions { align-items: flex-end; display: flex; flex-wrap: wrap; gap: 22px; margin-top: 30px;
 }
-.platform-actions { align-items: center; display: flex; flex-wrap: wrap; gap: 16px; margin-top: 18px;
+.download-action { display: grid; gap: 8px;
+}
+.download-label { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+}
+.platform-actions { align-items: flex-start; display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px;
 }
 .store-badge-link { align-items: center; display: inline-flex; justify-content: center;
 }
 .app-store-link img { height: auto; width: 156px;
 }
-.android-notice { align-items: center; border-left: 1px solid rgba(255, 255, 255, 0.3); color: rgba(255, 255, 255, 0.82); display: inline-flex; font-size: 0.68rem; font-weight: 700; gap: 9px; letter-spacing: 0.04em; line-height: 1.5; max-width: 250px; padding-left: 16px;
+.android-notice { align-items: center; border-top: 1px solid rgba(255, 255, 255, 0.3); color: rgba(255, 255, 255, 0.82); display: inline-flex; font-size: 0.68rem; font-weight: 700; gap: 9px; letter-spacing: 0.04em; line-height: 1.5; max-width: 520px; padding-top: 12px;
 }
 .android-notice span { color: var(--lime); font-size: 0.55rem;
 }
@@ -168,8 +140,6 @@ footer nav a:focus-visible::after { transform: scaleX(1);
 .header-cta:focus-visible { transform: translateY(-2px);
 }
 .store-badge-link:focus-visible { border-radius: 8px; outline: 3px solid white; outline-offset: 4px;
-}
-.button-lime { background: var(--lime); color: var(--ink);
 }
 .button-outline { border: 1px solid rgba(255, 255, 255, 0.65);
 }
@@ -209,7 +179,7 @@ footer nav a:focus-visible::after { transform: scaleX(1);
 }
 .card-eyebrow { margin: 50px 0 12px; opacity: 0.7; pointer-events: none; position: relative; z-index: 2;
 }
-.feature-card h3 { font-family: var(--font-display), sans-serif; font-size: clamp(2.6rem, 3.6vw, 4.3rem); letter-spacing: -0.025em; line-height: 0.95; margin: 0 0 18px; pointer-events: none; position: relative; text-transform: uppercase; z-index: 2;
+.feature-card h3 { font-family: var(--font-display), sans-serif; font-size: clamp(2.6rem, 3.6vw, 4.3rem); letter-spacing: -0.025em; line-height: 1.02; margin: 0 0 18px; pointer-events: none; position: relative; text-transform: uppercase; z-index: 2;
 }
 .feature-card > p:not(.card-eyebrow) { font-size: 0.9rem; line-height: 1.65; margin: 0; max-width: 430px; opacity: 0.86; pointer-events: none; position: relative; z-index: 2;
 }
@@ -269,7 +239,7 @@ footer nav a:focus-visible::after { transform: scaleX(1);
 }
 .showcase-dialog-copy { align-self: center; padding: 62px clamp(32px, 5vw, 62px);
 }
-.showcase-dialog-copy h2 { font-family: var(--font-display), sans-serif; font-size: clamp(3.2rem, 5.5vw, 5.7rem); font-weight: 600; letter-spacing: -0.035em; line-height: 0.9; margin: 0 0 24px; text-transform: uppercase;
+.showcase-dialog-copy h2 { font-family: var(--font-display), sans-serif; font-size: clamp(3.2rem, 5.5vw, 5.7rem); font-weight: 600; letter-spacing: -0.035em; line-height: 1; margin: 0 0 24px; text-transform: uppercase;
 }
 .showcase-dialog-copy > p:not(.section-kicker) { line-height: 1.7; margin: 0; opacity: 0.76;
 }
@@ -358,8 +328,6 @@ footer nav { display: flex; gap: 24px;
   .desktop-nav { display: none;
   }
   .hero { grid-template-columns: minmax(250px, 0.8fr) 1.2fr;
-  }
-  .hero-side { display: none;
   }
   .hero-phone { width: min(84%, 330px);
   }
@@ -469,6 +437,8 @@ footer nav { display: flex; gap: 24px;
   .hero h1 { font-size: 4.2rem;
   }
   .hero-actions { align-items: stretch; flex-direction: column;
+  }
+  .download-action { align-self: flex-start;
   }
   .platform-actions { align-items: flex-start; flex-direction: column;
   }

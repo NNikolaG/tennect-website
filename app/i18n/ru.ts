@@ -10,8 +10,7 @@ export const ru: SiteContent = {
     mobileNav: "Мобильная навигация",
     openNav: "Открыть навигацию",
     selectLanguage: "Выбрать язык",
-    surfaces: "Типы покрытия корта",
-    matchPreview: "Предпросмотр матча Tennect",
+    profilePreview: "Профиль игрока и расписание в Tennect",
     features: "Возможности Tennect",
     seoUses: "Как использовать Tennect",
     legalNav: "Правовая информация и контакты",
@@ -26,18 +25,12 @@ export const ru: SiteContent = {
     download: "Скачать для iPhone",
     menu: "Меню",
   },
-  side: {
-    perfectMatch: "Найдите партнёра для игры",
-    filters: "Уровень · место · время",
-    surfaces: ["ГРУНТ", "ТРАВА", "ХАРД"],
-    everyCourt: "Ближайшие корты на одной карте.",
-  },
   hero: {
     eyebrow: "Ваше теннисное сообщество",
     title: ["Ваш следующий", "теннисный матч", "начинается здесь."],
     copy:
       "Находите игроков своего уровня, открывайте корты поблизости и организуйте каждый матч в одном месте.",
-    download: "Скачать для iPhone",
+    download: "Скачать",
     explore: "Посмотреть возможности",
     androidSoon: "Версия для Android скоро — сообщить о запуске.",
     appStoreBadgeAlt: "Загрузить Tennect в App Store",
@@ -47,7 +40,7 @@ export const ru: SiteContent = {
       "Одна общая игра",
     ],
     imageAlt:
-      "Приложение Tennect показывает подтверждённый теннисный матч двух игроков",
+      "Профиль игрока Tennect с расписанием и любимыми покрытиями",
   },
   intro: {
     kicker: "Теннис объединяет.",

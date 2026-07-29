@@ -10,8 +10,7 @@ export const en: SiteContent = {
     mobileNav: "Mobile navigation",
     openNav: "Open navigation",
     selectLanguage: "Select language",
-    surfaces: "Court surface options",
-    matchPreview: "Tennect match preview screen",
+    profilePreview: "Tennect player profile and availability screen",
     features: "Tennect features",
     seoUses: "Ways to use Tennect",
     legalNav: "Legal and contact links",
@@ -26,24 +25,18 @@ export const en: SiteContent = {
     download: "Download for iPhone",
     menu: "Menu",
   },
-  side: {
-    perfectMatch: "Find your perfect match",
-    filters: "Level · location · availability",
-    surfaces: ["CLAY", "GRASS", "HARD"],
-    everyCourt: "Nearby courts on one map.",
-  },
   hero: {
     eyebrow: "Your tennis community",
     title: ["Your next", "tennis match", "starts here."],
     copy:
       "Find players at your level, discover nearby courts and organise every match in one place.",
-    download: "Download for iPhone",
+    download: "Download",
     explore: "See how it works",
     androidSoon: "Android version coming soon — get notified.",
     appStoreBadgeAlt: "Download Tennect on the App Store",
     notes: ["Built for every level", "Available in 23 languages", "One connected game"],
     imageAlt:
-      "Tennect app showing a confirmed tennis match between two players",
+      "Tennect player profile with availability schedule and preferred court surfaces",
   },
   intro: {
     kicker: "Tennis, connected.",
