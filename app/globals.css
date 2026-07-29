@@ -73,9 +73,9 @@ footer nav a:focus-visible::after { transform: scaleX(1);
 }
 .court-lines::after { height: 1px; left: -120px; top: 50%; width: 810px;
 }
-.final-ball { background: var(--lime); border-radius: 50%; box-shadow: inset -8px -8px 0 rgba(11, 47, 37, 0.08);
+.final-ball { background: radial-gradient(circle at -12% 50%, transparent 0 54%, rgba(90, 119, 50, 0.48) 55% 58%, transparent 59%), radial-gradient(circle at 112% 50%, transparent 0 54%, rgba(90, 119, 50, 0.48) 55% 58%, transparent 59%), #efff78; border: 2px solid rgba(11, 47, 37, 0.18); border-radius: 50%; box-shadow: inset -10px -11px 0 rgba(11, 47, 37, 0.09), 0 12px 24px rgba(11, 47, 37, 0.18); overflow: hidden;
 }
-.final-ball::after { border: 2px solid rgba(11, 47, 37, 0.36); border-left-color: transparent; border-radius: 50%; content: ""; inset: 8px; position: absolute; transform: rotate(35deg);
+.final-ball::after { background: radial-gradient(circle at 32% 24%, rgba(255, 255, 255, 0.58), transparent 34%); content: ""; inset: 0; position: absolute;
 }
 .hero-phone { align-self: end; background: var(--forest-deep); border: 8px solid var(--forest-deep); border-bottom: 0; border-radius: 48px 48px 0 0; box-shadow: 0 28px 70px rgba(53, 17, 5, 0.32); justify-self: center; max-height: 640px; overflow: hidden; position: relative; width: min(92%, 318px); z-index: 3;
 }
