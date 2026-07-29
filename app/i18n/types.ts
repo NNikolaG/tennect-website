@@ -7,11 +7,16 @@ export type FeatureContent = {
   title: string;
   copy: string;
   alt: string;
+  action: string;
+  details: [string, string, string];
 };
 
 export type GalleryContent = {
   label: string;
   alt: string;
+  action: string;
+  copy: string;
+  details: [string, string, string];
 };
 
 export type FaqContent = {
@@ -35,6 +40,7 @@ export type SiteContent = {
     seoUses: string;
     legalNav: string;
     backToTop: string;
+    closeFeature: string;
   };
   nav: {
     features: string;
@@ -55,7 +61,7 @@ export type SiteContent = {
     title: [string, string, string];
     copy: string;
     explore: string;
-    join: string;
+    appStoreBadgeAlt: string;
     notes: [string, string, string];
     imageAlt: string;
   };
@@ -63,6 +69,9 @@ export type SiteContent = {
     kicker: string;
     title: string;
     copy: string;
+  };
+  featureDialog: {
+    kicker: string;
   };
   features: [FeatureContent, FeatureContent, FeatureContent];
   steps: {

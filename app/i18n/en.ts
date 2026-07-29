@@ -16,6 +16,7 @@ export const en: SiteContent = {
     seoUses: "Ways to use Tennect",
     legalNav: "Legal and contact links",
     backToTop: "Back to top",
+    closeFeature: "Close feature details",
   },
   nav: {
     features: "Features",
@@ -37,7 +38,7 @@ export const en: SiteContent = {
     copy:
       "Find players at your level, discover nearby courts and organise every match in one place.",
     explore: "Explore Tennect",
-    join: "Join early access",
+    appStoreBadgeAlt: "Download Tennect on the App Store",
     notes: ["Built for every level", "23 app languages", "One connected game"],
     imageAlt:
       "Tennect app showing a confirmed tennis match between two players",
@@ -48,6 +49,9 @@ export const en: SiteContent = {
     copy:
       "Tennect turns the scattered parts of amateur tennis into one clear experience—from finding a hitting partner to confirming the final score.",
   },
+  featureDialog: {
+    kicker: "Tennect feature",
+  },
   features: [
     {
       eyebrow: "Player finder",
@@ -55,6 +59,12 @@ export const en: SiteContent = {
       copy:
         "Search by city, skill level, preferred surface and availability. Discover the right tennis partner without endless group chats.",
       alt: "Tennect player search showing local players and preferred surfaces",
+      action: "Explore player finder",
+      details: [
+        "Filter nearby players by city, distance, level, preferred surface and availability.",
+        "Review tennis profiles and compare the details that matter before sending a request.",
+        "Connect directly with a compatible player and move from search to a real match.",
+      ],
     },
     {
       eyebrow: "Court discovery",
@@ -62,6 +72,12 @@ export const en: SiteContent = {
       copy:
         "See courts on a map, check ratings, opening hours and contact details, then choose where your next match happens.",
       alt: "Tennect map displaying nearby tennis courts",
+      action: "Explore court discovery",
+      details: [
+        "Browse nearby courts in a clear list or explore them visually on the map.",
+        "Check ratings, opening hours, address and contact information in one place.",
+        "Save useful courts and open their location when it is time to play.",
+      ],
     },
     {
       eyebrow: "Match day",
@@ -69,6 +85,12 @@ export const en: SiteContent = {
       copy:
         "Send a match or training request, confirm the time and court, keep score and build a complete history of your tennis.",
       alt: "Tennect confirmed tennis match preview",
+      action: "Explore match day",
+      details: [
+        "Send match or training requests with a suggested time, court and format.",
+        "Keep both players aligned with clear confirmations and match details.",
+        "Record the score, verify the result and build your statistics and match history.",
+      ],
     },
   ],
   steps: {
@@ -100,22 +122,62 @@ export const en: SiteContent = {
       {
         label: "Set availability",
         alt: "Tennect availability calendar and preferred tennis surfaces",
+        action: "Explore availability",
+        copy:
+          "Show other players when you are ready to play and which court surfaces suit you best.",
+        details: [
+          "Choose the days and times when you are usually available for tennis.",
+          "Add your preferred clay, grass or hard-court surfaces.",
+          "Update your availability whenever your weekly routine changes.",
+        ],
       },
       {
         label: "Manage matches",
         alt: "Upcoming confirmed tennis matches in Tennect",
+        action: "Explore match management",
+        copy:
+          "Keep every request, confirmed match and important match detail together.",
+        details: [
+          "See the opponent, date, time, court and match status at a glance.",
+          "Respond to new requests and follow upcoming confirmed matches.",
+          "Return to completed matches when you want to review your tennis history.",
+        ],
       },
       {
         label: "Discover courts",
         alt: "Search results for tennis courts in Tennect",
+        action: "Explore court search",
+        copy:
+          "Find the right local court using search results designed around real playing decisions.",
+        details: [
+          "Search nearby courts and compare useful information in a clear list.",
+          "Check ratings, opening hours, contact details and location.",
+          "Save favourites so reliable courts are easy to find again.",
+        ],
       },
       {
         label: "Climb rankings",
         alt: "Global tennis player rankings in Tennect",
+        action: "Explore rankings",
+        copy:
+          "See where you stand and follow your progress across city, country and global rankings.",
+        details: [
+          "Switch between city, country and global ranking views.",
+          "Track your current position, level and ranking progress.",
+          "Let verified match results build a clearer picture of your improvement.",
+        ],
       },
       {
         label: "Follow tennis news",
         alt: "Tennis news and community match feed in Tennect",
+        action: "Explore tennis news",
+        copy:
+          "Stay connected to tennis through relevant news and activity from the Tennect community.",
+        details: [
+          "Browse tennis stories without leaving your everyday playing app.",
+          "Follow updates connected to players, matches and the wider community.",
+          "Move naturally between reading, connecting and organising your next game.",
+        ],
       },
     ],
   },

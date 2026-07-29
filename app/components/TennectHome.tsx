@@ -4,29 +4,8 @@ import {
   locales,
   type Locale,
 } from "../i18n";
-
-const featureMedia = [
-  {
-    image: "/media/tennect-player-search.png",
-    tone: "lime",
-  },
-  {
-    image: "/media/tennect-courts-map.png",
-    tone: "clay",
-  },
-  {
-    image: "/media/tennect-match-preview.png",
-    tone: "cream",
-  },
-] as const;
-
-const galleryMedia = [
-  "/media/tennect-availability.png",
-  "/media/tennect-upcoming-matches.png",
-  "/media/tennect-court-search.png",
-  "/media/tennect-ranking.png",
-  "/media/tennect-tennis-news.png",
-] as const;
+import { FeatureShowcase } from "./FeatureShowcase";
+import { GalleryShowcase } from "./GalleryShowcase";
 
 const legalBase =
   "https://whwhvvfbxaoeezbtqhga.supabase.co/storage/v1/object/public/legal";
@@ -43,6 +22,10 @@ function earlyAccessHref(label: string) {
 
 export function TennectHome({ locale }: { locale: Locale }) {
   const content = getContent(locale);
+  const appStoreBadge =
+    locale === "ru"
+      ? "/media/app-store-badge-ru.svg"
+      : "/media/app-store-badge-en.svg";
   const accessHref = earlyAccessHref(content.nav.earlyAccess);
   const questionHref = `mailto:tennect@outlook.com?subject=${encodeURIComponent(
     `Tennect — ${content.faq.ask}`,
@@ -178,8 +161,17 @@ export function TennectHome({ locale }: { locale: Locale }) {
               <a className="button button-lime" href="#features">
                 {content.hero.explore} <span aria-hidden="true">↓</span>
               </a>
-              <a className="button button-outline" href={accessHref}>
-                {content.hero.join} <span aria-hidden="true">↗</span>
+              <a
+                className="app-store-link"
+                href={accessHref}
+                aria-label={content.hero.appStoreBadgeAlt}
+              >
+                <img
+                  src={appStoreBadge}
+                  width={120}
+                  height={40}
+                  alt={content.hero.appStoreBadgeAlt}
+                />
               </a>
             </div>
             <div className="hero-notes">
@@ -198,33 +190,12 @@ export function TennectHome({ locale }: { locale: Locale }) {
           <p>{content.intro.copy}</p>
         </section>
 
-        <section className="feature-grid" aria-label={content.aria.features}>
-          {content.features.map((feature, index) => {
-            const media = featureMedia[index];
-            return (
-              <article
-                className={`feature-card feature-card-${media.tone}`}
-                key={feature.title}
-              >
-                <div className="feature-card-top">
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <span>↗</span>
-                </div>
-                <p className="card-eyebrow">{feature.eyebrow}</p>
-                <h3>{feature.title}</h3>
-                <p>{feature.copy}</p>
-                <div className="feature-phone">
-                  <img
-                    src={media.image}
-                    width={1260}
-                    height={2736}
-                    alt={feature.alt}
-                  />
-                </div>
-              </article>
-            );
-          })}
-        </section>
+        <FeatureShowcase
+          features={content.features}
+          dialogKicker={content.featureDialog.kicker}
+          closeLabel={content.aria.closeFeature}
+          sectionLabel={content.aria.features}
+        />
 
         <section className="steps" id="how-it-works">
           <div className="steps-heading">
@@ -244,31 +215,10 @@ export function TennectHome({ locale }: { locale: Locale }) {
           </ol>
         </section>
 
-        <section className="app-gallery" id="inside-the-app">
-          <div className="gallery-heading">
-            <div>
-              <p className="section-kicker">{content.gallery.kicker}</p>
-              <h2>{content.gallery.title}</h2>
-            </div>
-            <p>{content.gallery.swipe}</p>
-          </div>
-          <div className="gallery-track">
-            {content.gallery.items.map((item, index) => (
-              <figure className="gallery-item" key={item.label}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <div className="gallery-phone">
-                  <img
-                    src={galleryMedia[index]}
-                    width={1260}
-                    height={2736}
-                    alt={item.alt}
-                  />
-                </div>
-                <figcaption>{item.label}</figcaption>
-              </figure>
-            ))}
-          </div>
-        </section>
+        <GalleryShowcase
+          closeLabel={content.aria.closeFeature}
+          gallery={content.gallery}
+        />
 
         <section className="seo-band">
           <div className="seo-badge" aria-hidden="true">
@@ -352,7 +302,12 @@ export function TennectHome({ locale }: { locale: Locale }) {
             {content.footer.terms}
           </a>
         </nav>
-        <p>© 2026 Tennect</p>
+        <p className="footer-copyright">© 2026 Tennect</p>
+        <p className="apple-credit">
+          Apple and the Apple logo are trademarks of Apple Inc., registered in
+          the U.S. and other countries and regions. App Store is a service mark
+          of Apple Inc.
+        </p>
       </footer>
     </div>
   );
