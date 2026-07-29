@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import type { SiteContent } from "../i18n";
 import { ShowcaseDialog } from "./ShowcaseDialog";
@@ -48,7 +49,7 @@ export function GalleryShowcase({
             />
             <span>{String(index + 1).padStart(2, "0")}</span>
             <div className="gallery-phone">
-              <img
+              <Image
                 src={galleryMedia[index]}
                 width={1260}
                 height={2736}

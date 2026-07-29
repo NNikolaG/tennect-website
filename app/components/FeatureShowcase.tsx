@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import type { SiteContent } from "../i18n";
 import { ShowcaseDialog } from "./ShowcaseDialog";
@@ -63,7 +64,7 @@ export function FeatureShowcase({
               <h3>{feature.title}</h3>
               <p>{feature.copy}</p>
               <div className="feature-phone">
-                <img
+                <Image
                   src={media.image}
                   width={1260}
                   height={2736}

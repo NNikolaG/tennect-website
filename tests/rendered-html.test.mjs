@@ -1,28 +1,82 @@
 import assert from "node:assert/strict";
+import { spawn } from "node:child_process";
 import { access, readFile } from "node:fs/promises";
-import test from "node:test";
+import { createServer } from "node:net";
+import test, { after, before } from "node:test";
+import { fileURLToPath } from "node:url";
 
 const projectRoot = new URL("../", import.meta.url);
+const projectRootPath = fileURLToPath(projectRoot);
+let appProcess;
+let baseUrl;
 
-async function render(pathname = "/") {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}-${pathname}`);
-  const { default: worker } = await import(workerUrl.href);
+async function availablePort() {
+  const server = createServer();
+  await new Promise((resolve, reject) => {
+    server.once("error", reject);
+    server.listen(0, "127.0.0.1", resolve);
+  });
+  const address = server.address();
+  const port = typeof address === "object" && address ? address.port : null;
+  await new Promise((resolve) => server.close(resolve));
+  assert.ok(port);
+  return port;
+}
 
-  return worker.fetch(
-    new Request(`http://localhost${pathname}`, {
-      headers: { accept: "text/html" },
-    }),
+async function waitForServer(url, processHandle) {
+  const deadline = Date.now() + 20_000;
+
+  while (Date.now() < deadline) {
+    if (processHandle.exitCode !== null) {
+      throw new Error(`Next.js server exited with code ${processHandle.exitCode}`);
+    }
+    try {
+      const response = await fetch(url);
+      if (response.ok) return;
+    } catch {
+      // The server is still starting.
+    }
+    await new Promise((resolve) => setTimeout(resolve, 150));
+  }
+
+  throw new Error("Timed out waiting for the Next.js production server");
+}
+
+before(async () => {
+  const port = await availablePort();
+  baseUrl = `http://127.0.0.1:${port}`;
+  appProcess = spawn(
+    process.execPath,
+    [
+      fileURLToPath(
+        new URL("../node_modules/next/dist/bin/next", import.meta.url),
+      ),
+      "start",
+      "--hostname",
+      "127.0.0.1",
+      "--port",
+      String(port),
+    ],
     {
-      ASSETS: {
-        fetch: async () => new Response("Not found", { status: 404 }),
-      },
-    },
-    {
-      waitUntil() {},
-      passThroughOnException() {},
+      cwd: projectRootPath,
+      env: { ...process.env, NEXT_TELEMETRY_DISABLED: "1" },
+      stdio: ["ignore", "pipe", "pipe"],
     },
   );
+
+  await waitForServer(baseUrl, appProcess);
+}, { timeout: 30_000 });
+
+after(async () => {
+  if (!appProcess || appProcess.exitCode !== null) return;
+  appProcess.kill("SIGTERM");
+  await new Promise((resolve) => appProcess.once("exit", resolve));
+}, { timeout: 10_000 });
+
+async function render(pathname = "/") {
+  return fetch(`${baseUrl}${pathname}`, {
+    headers: { accept: "text/html" },
+  });
 }
 
 async function htmlFor(pathname) {
@@ -59,12 +113,7 @@ test("renders Serbian and Russian localized routes", async () => {
   assert.match(russian, /google-play-badge-ru\.png/);
 });
 
-test("keeps required public and hosting assets in the repository", async () => {
-  const hosting = JSON.parse(
-    await readFile(new URL(".openai/hosting.json", projectRoot), "utf8"),
-  );
-
-  assert.match(hosting.project_id, /^appgprj_/);
+test("keeps required public assets in the repository", async () => {
   await Promise.all([
     access(new URL("public/og.png", projectRoot)),
     access(new URL("public/media/tennect-icon.png", projectRoot)),
@@ -81,4 +130,28 @@ test("centers every shared showcase dialog in the viewport", async () => {
   assert.match(dialogRule, /left:\s*50%/);
   assert.match(dialogRule, /top:\s*50%/);
   assert.match(dialogRule, /transform:\s*translate\(-50%,\s*-50%\)/);
+});
+
+test("uses only the standard Next.js runtime", async () => {
+  const packageJson = JSON.parse(
+    await readFile(new URL("package.json", projectRoot), "utf8"),
+  );
+  const installedPackages = {
+    ...packageJson.dependencies,
+    ...packageJson.devDependencies,
+  };
+
+  assert.equal(packageJson.scripts.dev, "next dev");
+  assert.equal(packageJson.scripts.build, "next build");
+  assert.equal(packageJson.scripts.start, "next start");
+  for (const packageName of [
+    "vinext",
+    "vite",
+    "wrangler",
+    "@cloudflare/vite-plugin",
+    "drizzle-orm",
+    "drizzle-kit",
+  ]) {
+    assert.equal(installedPackages[packageName], undefined);
+  }
 });

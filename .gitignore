@@ -10,16 +10,11 @@
 
 # Build output
 /.next/
-/.vinext/
-/dist/
 /out/
 /coverage/
 *.tsbuildinfo
 
-# Cloudflare and local tooling
-/.wrangler/
-/outputs/
-/work/
+# Local tooling
 /.cache/
 /.turbo/
 .eslintcache

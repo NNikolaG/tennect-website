@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   getContent,
   localePaths,
@@ -66,7 +67,7 @@ export function TennectHome({ locale }: { locale: Locale }) {
 
       <header className="site-header">
         <a className="brand" href="#top" aria-label={content.aria.home}>
-          <img
+          <Image
             src="/media/tennect-icon.png"
             width={1024}
             height={1024}
@@ -143,7 +144,7 @@ export function TennectHome({ locale }: { locale: Locale }) {
 
           <div className="hero-phone" aria-label={content.aria.matchPreview}>
             <div className="phone-speaker" aria-hidden="true" />
-            <img
+            <Image
               src="/media/tennect-match-preview.png"
               width={1260}
               height={2736}
@@ -176,7 +177,7 @@ export function TennectHome({ locale }: { locale: Locale }) {
                   rel="noreferrer"
                   aria-label={content.hero.appStoreBadgeAlt}
                 >
-                  <img
+                  <Image
                     src={appStoreBadge}
                     width={120}
                     height={40}
@@ -188,7 +189,7 @@ export function TennectHome({ locale }: { locale: Locale }) {
                   href={accessHref}
                   aria-label={content.hero.googlePlayBadgeAlt}
                 >
-                  <img
+                  <Image
                     src={googlePlayBadge}
                     width={646}
                     height={250}
@@ -245,7 +246,7 @@ export function TennectHome({ locale }: { locale: Locale }) {
 
         <section className="seo-band">
           <div className="seo-badge" aria-hidden="true">
-            <img
+            <Image
               src="/media/tennect-icon.png"
               width={1024}
               height={1024}
@@ -299,7 +300,7 @@ export function TennectHome({ locale }: { locale: Locale }) {
 
       <footer>
         <a className="brand brand-footer" href="#top" aria-label={content.aria.backToTop}>
-          <img
+          <Image
             src="/media/tennect-icon.png"
             width={1024}
             height={1024}

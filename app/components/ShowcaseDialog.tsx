@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { type MouseEvent, useEffect, useId, useRef } from "react";
 
 type ShowcaseDialogProps = {
@@ -71,7 +72,7 @@ export function ShowcaseDialog({
           </ul>
         </div>
         <div className="showcase-dialog-phone">
-          <img
+          <Image
             src={image}
             width={1260}
             height={2736}

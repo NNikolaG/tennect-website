@@ -16,14 +16,13 @@ content, store badges, and search-engine language alternatives.
 ## Technology
 
 - React 19
-- Next.js-compatible App Router
-- [vinext](https://github.com/cloudflare/vinext)
+- Next.js 16 App Router
 - TypeScript
-- Cloudflare Workers-compatible deployment output
+- Tailwind CSS 4
 
 ## Local development
 
-Node.js `>=22.13.0` is required.
+Node.js 22 is required.
 
 ```bash
 npm ci
@@ -54,9 +53,10 @@ tests/          Server-rendering checks
 
 ## Deployment
 
-The site is configured for OpenAI Sites through `.openai/hosting.json`.
-Production deployments use the validated vinext build output.
+The project is a standard Next.js application ready for Vercel:
 
-## Production
-
-[tennect-tennis-community.guta89.chatgpt.site](https://tennect-tennis-community.guta89.chatgpt.site/)
+- Framework preset: `Next.js`
+- Production branch: `main`
+- Root directory: repository root
+- Node.js version: `22.x`
+- Build and output settings: use Vercel defaults
