@@ -38,6 +38,28 @@ footer nav a:focus-visible::after { transform: scaleX(1);
 }
 .header-cta span { align-items: center; background: var(--clay); border-radius: 50%; display: flex; font-size: 1.1rem; height: 36px; justify-content: center; width: 36px;
 }
+.header-tools { align-items: center; display: flex; gap: 10px; justify-self: end;
+}
+.language-switcher { position: relative;
+}
+.language-switcher summary { align-items: center; border: 1px solid var(--line); border-radius: 999px; cursor: pointer; display: flex; font-size: 0.72rem; font-weight: 800; gap: 8px; justify-content: center; list-style: none; min-height: 52px; min-width: 68px; padding: 12px 15px;
+}
+.language-switcher summary::-webkit-details-marker { display: none;
+}
+.language-switcher summary b { font-size: 0.9rem; transition: transform 180ms ease;
+}
+.language-switcher[open] summary b { transform: rotate(180deg);
+}
+.language-switcher > div { background: white; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 16px 40px rgba(8, 39, 31, 0.14); min-width: 170px; padding: 8px; position: absolute; right: 0; top: 60px; z-index: 30;
+}
+.language-switcher a { align-items: center; border-radius: 10px; display: flex; font-size: 0.78rem; font-weight: 700; gap: 12px; padding: 10px;
+}
+.language-switcher a:hover,
+.language-switcher a:focus-visible,
+.language-switcher a[aria-current="page"] { background: var(--cream);
+}
+.language-switcher a span { color: var(--clay); font-size: 0.64rem; letter-spacing: 0.08em; min-width: 22px;
+}
 .mobile-menu { display: none;
 }
 .hero { background: var(--clay); border-radius: 34px; color: white; display: grid; grid-template-columns: minmax(190px, 0.65fr) minmax(280px, 0.95fr) minmax(440px, 1.5fr); min-height: 720px; margin: 0 24px; overflow: hidden; position: relative;
@@ -102,6 +124,12 @@ footer nav a:focus-visible::after { transform: scaleX(1);
 .final-cta h2 { font-family: var(--font-display), sans-serif; font-weight: 600; letter-spacing: -0.035em; line-height: 0.88; margin: 0; text-transform: uppercase;
 }
 .hero h1 { font-size: clamp(4.5rem, 7.4vw, 8.4rem); margin: 28px 0;
+}
+[lang="sr-Latn"] .hero h1 { font-size: clamp(4.2rem, 6.6vw, 7.6rem);
+}
+[lang="ru"] .hero h1 { font-size: clamp(4rem, 6.2vw, 7.2rem);
+}
+[lang="ru"] .desktop-nav { font-size: 0.72rem; gap: clamp(16px, 2vw, 30px);
 }
 .hero-copy { color: rgba(255, 255, 255, 0.84); font-size: clamp(1rem, 1.3vw, 1.18rem); line-height: 1.7; max-width: 560px;
 }
@@ -280,6 +308,10 @@ footer > p:last-child { justify-self: end;
   .brand { font-size: 1.65rem;
   }
   .brand img { height: 38px; width: 38px;
+  }
+  .language-switcher summary { min-height: 44px; min-width: 60px; padding: 9px 12px;
+  }
+  .language-switcher > div { top: 52px;
   }
   .header-cta { display: none;
   }
