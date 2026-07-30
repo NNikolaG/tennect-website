@@ -208,6 +208,9 @@ test("renders analytics markers for feature and download interactions", async ()
   assert.match(analyticsSource, /G-L434P285VX/);
   assert.match(analyticsSource, /tennect-analytics-consent/);
   assert.match(analyticsSource, /analytics_storage/);
+  assert.match(analyticsSource, /dataLayer\?\.(?:push)\(arguments\)/);
+  assert.match(analyticsSource, /send_page_view: true/);
+  assert.doesNotMatch(analyticsSource, /analytics-settings/);
 });
 
 test("centers every shared showcase dialog in the viewport", async () => {

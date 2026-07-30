@@ -1,12 +1,12 @@
 "use client";
 
-import Script from "next/script";
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 
 const measurementId =
   process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-L434P285VX";
 const consentStorageKey = "tennect-analytics-consent";
 const consentChangeEvent = "tennect-analytics-consent-change";
+const googleTagScriptId = "tennect-google-analytics";
 const legalBase =
   "https://whwhvvfbxaoeezbtqhga.supabase.co/storage/v1/object/public/legal";
 
@@ -25,26 +25,23 @@ declare global {
 const consentCopy = {
   en: {
     title: "Help us improve Tennect",
-    body: "With your permission, we use Google Analytics to understand visits and which features people explore. We do not send personal data.",
+    body: "With your permission, we use Google Analytics to understand visits and which features people explore. We do not send your Tennect account, profile, or message data to Analytics.",
     accept: "Allow analytics",
     decline: "Decline",
-    settings: "Privacy settings",
     privacy: "Privacy policy",
   },
   sr: {
     title: "Pomozi nam da unapredimo Tennect",
-    body: "Uz tvoju dozvolu, Google Analytics koristimo da razumemo posete i koje funkcije korisnici istražuju. Ne šaljemo lične podatke.",
+    body: "Uz tvoju dozvolu, Google Analytics koristimo da razumemo posete i koje funkcije korisnici istražuju. Analytics-u ne šaljemo podatke iz tvog Tennect naloga, profila ili poruka.",
     accept: "Dozvoli analitiku",
     decline: "Odbij",
-    settings: "Podešavanja privatnosti",
     privacy: "Politika privatnosti",
   },
   ru: {
     title: "Помогите нам улучшить Tennect",
-    body: "С вашего разрешения Google Analytics помогает нам понимать посещаемость и интерес к функциям. Мы не отправляем персональные данные.",
+    body: "С вашего разрешения Google Analytics помогает нам понимать посещаемость и интерес к функциям. Мы не передаём в Analytics данные вашей учётной записи Tennect, профиля или сообщений.",
     accept: "Разрешить аналитику",
     decline: "Отклонить",
-    settings: "Настройки конфиденциальности",
     privacy: "Политика конфиденциальности",
   },
 } as const;
@@ -87,6 +84,28 @@ function subscribeToConsent(onStoreChange: () => void) {
   };
 }
 
+function loadGoogleTag() {
+  if (document.getElementById(googleTagScriptId)) return;
+
+  try {
+    const script = document.createElement("script");
+    script.id = googleTagScriptId;
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+    script.addEventListener(
+      "error",
+      () => {
+        script.remove();
+        window.tennectAnalyticsInitialized = false;
+      },
+      { once: true },
+    );
+    document.head.appendChild(script);
+  } catch {
+    window.tennectAnalyticsInitialized = false;
+  }
+}
+
 export function trackAnalyticsEvent(
   eventName: string,
   parameters: Record<string, string>,
@@ -106,7 +125,6 @@ export function GoogleAnalytics({ lang }: { lang: string }) {
     readConsentChoice,
     () => null,
   );
-  const [panelOpen, setPanelOpen] = useState(false);
   const hydrated = useSyncExternalStore(
     () => () => {},
     () => true,
@@ -122,9 +140,13 @@ export function GoogleAnalytics({ lang }: { lang: string }) {
     window.dataLayer = window.dataLayer || [];
     window.gtag =
       window.gtag ||
-      ((...args: GtagArguments) => {
-        window.dataLayer?.push(args);
-      });
+      function gtag(...args: GtagArguments) {
+        void args;
+        // Google gtag.js expects the function's Arguments object in dataLayer.
+        // eslint-disable-next-line prefer-rest-params
+        window.dataLayer?.push(arguments);
+      };
+    loadGoogleTag();
 
     if (window.tennectAnalyticsInitialized) {
       window.gtag("consent", "update", consentParams("granted"));
@@ -134,7 +156,10 @@ export function GoogleAnalytics({ lang }: { lang: string }) {
     window.tennectAnalyticsInitialized = true;
     window.gtag("consent", "default", consentParams("granted"));
     window.gtag("js", new Date());
-    window.gtag("config", measurementId, { anonymize_ip: true });
+    window.gtag("config", measurementId, {
+      anonymize_ip: true,
+      send_page_view: true,
+    });
   }, [choice]);
 
   useEffect(() => {
@@ -177,20 +202,12 @@ export function GoogleAnalytics({ lang }: { lang: string }) {
     }
     window.tennectAnalyticsConsent = nextChoice;
     window.gtag?.("consent", "update", consentParams(nextChoice));
-    setPanelOpen(false);
     window.dispatchEvent(new Event(consentChangeEvent));
   }
 
   return (
     <>
-      {hydrated && choice === "granted" ? (
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
-          strategy="afterInteractive"
-        />
-      ) : null}
-
-      {hydrated && (panelOpen || choice === null) ? (
+      {hydrated && choice === null ? (
         <aside
           className="analytics-consent"
           aria-labelledby="analytics-consent-title"
@@ -213,16 +230,6 @@ export function GoogleAnalytics({ lang }: { lang: string }) {
             </button>
           </div>
         </aside>
-      ) : null}
-
-      {hydrated && choice !== null && !panelOpen ? (
-        <button
-          className="analytics-settings"
-          type="button"
-          onClick={() => setPanelOpen(true)}
-        >
-          {copy.settings}
-        </button>
       ) : null}
     </>
   );
