@@ -46,6 +46,7 @@ export const en: SiteContent = {
   },
   featureDialog: {
     kicker: "Tennect feature",
+    openLabel: "Details",
   },
   features: [
     {

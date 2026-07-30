@@ -67,6 +67,7 @@ export type SiteContent = {
   };
   featureDialog: {
     kicker: string;
+    openLabel: string;
   };
   features: [FeatureContent, FeatureContent, FeatureContent];
   steps: {

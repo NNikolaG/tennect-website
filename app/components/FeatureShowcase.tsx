@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import type { SiteContent } from "../i18n";
+import { ActionIcon } from "./ActionIcon";
 import { ShowcaseDialog } from "./ShowcaseDialog";
 
 const featureMedia = [
@@ -24,6 +25,7 @@ type FeatureShowcaseProps = {
   features: SiteContent["features"];
   dialogKicker: string;
   closeLabel: string;
+  openLabel: string;
   sectionLabel: string;
 };
 
@@ -31,6 +33,7 @@ export function FeatureShowcase({
   features,
   dialogKicker,
   closeLabel,
+  openLabel,
   sectionLabel,
 }: FeatureShowcaseProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -53,12 +56,16 @@ export function FeatureShowcase({
                 className="feature-card-open"
                 type="button"
                 aria-haspopup="dialog"
-                aria-label={`${feature.action}: ${feature.title}`}
+                aria-label={`${openLabel}: ${feature.title}`}
                 onClick={() => setSelectedIndex(index)}
-              />
+              >
+                <span className="feature-card-action">
+                  <ActionIcon name="details" />
+                  <span>{openLabel}</span>
+                </span>
+              </button>
               <div className="feature-card-top">
                 <span>{String(index + 1).padStart(2, "0")}</span>
-                <span aria-hidden="true">↗</span>
               </div>
               <p className="card-eyebrow">{feature.eyebrow}</p>
               <h3>{feature.title}</h3>

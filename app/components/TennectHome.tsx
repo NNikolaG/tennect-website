@@ -5,6 +5,7 @@ import {
   locales,
   type Locale,
 } from "../i18n";
+import { ActionIcon } from "./ActionIcon";
 import { FeatureShowcase } from "./FeatureShowcase";
 import { GalleryShowcase } from "./GalleryShowcase";
 
@@ -106,7 +107,7 @@ export function TennectHome({ locale }: { locale: Locale }) {
             target="_blank"
             rel="noreferrer"
           >
-            {content.nav.download} <span aria-hidden="true">↗</span>
+            {content.nav.download} <ActionIcon badge name="download" />
           </a>
           <details className="mobile-menu">
             <summary aria-label={content.aria.openNav}>
@@ -198,6 +199,7 @@ export function TennectHome({ locale }: { locale: Locale }) {
           features={content.features}
           dialogKicker={content.featureDialog.kicker}
           closeLabel={content.aria.closeFeature}
+          openLabel={content.featureDialog.openLabel}
           sectionLabel={content.aria.features}
         />
 
@@ -250,7 +252,7 @@ export function TennectHome({ locale }: { locale: Locale }) {
             <p className="section-kicker">{content.faq.kicker}</p>
             <h2>{content.faq.title}</h2>
             <a href={questionHref}>
-              {content.faq.ask} <span aria-hidden="true">↗</span>
+              {content.faq.ask} <ActionIcon name="email" />
             </a>
           </div>
           <div className="faq-list">
@@ -270,9 +272,9 @@ export function TennectHome({ locale }: { locale: Locale }) {
         <section className="final-cta">
           <Image
             className="final-ball"
-            src="/media/tennis-ball-realistic.png"
-            width={768}
-            height={768}
+            src="/media/tennis-ball-illustrated.png"
+            width={1254}
+            height={1254}
             alt=""
             aria-hidden="true"
           />
@@ -285,7 +287,7 @@ export function TennectHome({ locale }: { locale: Locale }) {
             target="_blank"
             rel="noreferrer"
           >
-            {content.finalCta.button} <span aria-hidden="true">↗</span>
+            {content.finalCta.button} <ActionIcon name="download" />
           </a>
         </section>
       </main>

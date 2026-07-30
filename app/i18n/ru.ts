@@ -50,6 +50,7 @@ export const ru: SiteContent = {
   },
   featureDialog: {
     kicker: "Возможность Tennect",
+    openLabel: "Подробнее",
   },
   features: [
     {
