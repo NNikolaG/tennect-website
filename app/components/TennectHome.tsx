@@ -106,6 +106,10 @@ export function TennectHome({ locale }: { locale: Locale }) {
             href={appStoreUrl}
             target="_blank"
             rel="noreferrer"
+            data-analytics-event="app_download_click"
+            data-analytics-placement="header"
+            data-analytics-locale={locale}
+            data-analytics-store="app_store"
           >
             {content.nav.download} <ActionIcon badge name="download" />
           </a>
@@ -159,6 +163,10 @@ export function TennectHome({ locale }: { locale: Locale }) {
                     target="_blank"
                     rel="noreferrer"
                     aria-label={content.hero.appStoreBadgeAlt}
+                    data-analytics-event="app_download_click"
+                    data-analytics-placement="hero"
+                    data-analytics-locale={locale}
+                    data-analytics-store="app_store"
                   >
                     <Image
                       src={appStoreBadge}
@@ -199,6 +207,7 @@ export function TennectHome({ locale }: { locale: Locale }) {
           features={content.features}
           dialogKicker={content.featureDialog.kicker}
           closeLabel={content.aria.closeFeature}
+          locale={locale}
           openLabel={content.featureDialog.openLabel}
           sectionLabel={content.aria.features}
         />
@@ -224,6 +233,7 @@ export function TennectHome({ locale }: { locale: Locale }) {
         <GalleryShowcase
           closeLabel={content.aria.closeFeature}
           gallery={content.gallery}
+          locale={locale}
         />
 
         <section className="seo-band">
@@ -286,6 +296,10 @@ export function TennectHome({ locale }: { locale: Locale }) {
             href={appStoreUrl}
             target="_blank"
             rel="noreferrer"
+            data-analytics-event="app_download_click"
+            data-analytics-placement="final_cta"
+            data-analytics-locale={locale}
+            data-analytics-store="app_store"
           >
             {content.finalCta.button} <ActionIcon name="download" />
           </a>

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import type { SiteContent } from "../i18n";
+import type { Locale, SiteContent } from "../i18n";
 import { ActionIcon } from "./ActionIcon";
 import { ShowcaseDialog } from "./ShowcaseDialog";
 
@@ -25,6 +25,7 @@ type FeatureShowcaseProps = {
   features: SiteContent["features"];
   dialogKicker: string;
   closeLabel: string;
+  locale: Locale;
   openLabel: string;
   sectionLabel: string;
 };
@@ -33,6 +34,7 @@ export function FeatureShowcase({
   features,
   dialogKicker,
   closeLabel,
+  locale,
   openLabel,
   sectionLabel,
 }: FeatureShowcaseProps) {
@@ -57,6 +59,10 @@ export function FeatureShowcase({
                 type="button"
                 aria-haspopup="dialog"
                 aria-label={`${openLabel}: ${feature.title}`}
+                data-analytics-event="select_content"
+                data-analytics-content-type="feature_detail"
+                data-analytics-content-id={`feature_${String(index + 1).padStart(2, "0")}`}
+                data-analytics-locale={locale}
                 onClick={() => setSelectedIndex(index)}
               >
                 <span className="feature-card-action">

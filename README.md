@@ -80,3 +80,15 @@ Open Graph, robots, and sitemap URLs. Set `SITE_URL` in Vercel only when a
 specific custom domain should always be canonical. Ensure **Automatically
 expose System Environment Variables** is enabled in Vercel; otherwise define
 `SITE_URL` explicitly.
+
+## Analytics
+
+Google Analytics 4 is integrated with consent-controlled loading. The
+production Measurement ID is `G-L434P285VX`; it can be overridden with:
+
+```bash
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-L434P285VX
+```
+
+The site tracks page views after consent, feature and gallery detail openings
+with `select_content`, and App Store actions with `app_download_click`.

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Manrope, Roboto_Condensed } from "next/font/google";
+import { GoogleAnalytics } from "./components/GoogleAnalytics";
 import "./globals.css";
 
 const display = Roboto_Condensed({
@@ -44,6 +45,7 @@ export function SiteDocument({
     <html lang={lang}>
       <body className={`${display.variable} ${body.variable}`}>
         {children}
+        <GoogleAnalytics lang={lang} />
       </body>
     </html>
   );

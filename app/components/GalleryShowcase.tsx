@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import type { SiteContent } from "../i18n";
+import type { Locale, SiteContent } from "../i18n";
 import { ShowcaseDialog } from "./ShowcaseDialog";
 
 const galleryMedia = [
@@ -16,11 +16,13 @@ const galleryMedia = [
 type GalleryShowcaseProps = {
   closeLabel: string;
   gallery: SiteContent["gallery"];
+  locale: Locale;
 };
 
 export function GalleryShowcase({
   closeLabel,
   gallery,
+  locale,
 }: GalleryShowcaseProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const selectedItem =
@@ -45,6 +47,10 @@ export function GalleryShowcase({
               type="button"
               aria-haspopup="dialog"
               aria-label={`${item.action}: ${item.label}`}
+              data-analytics-event="select_content"
+              data-analytics-content-type="gallery_detail"
+              data-analytics-content-id={`gallery_${String(index + 1).padStart(2, "0")}`}
+              data-analytics-locale={locale}
               onClick={() => setSelectedIndex(index)}
             />
             <span>{String(index + 1).padStart(2, "0")}</span>

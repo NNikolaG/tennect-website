@@ -184,10 +184,30 @@ test("keeps required public assets in the repository", async () => {
     access(new URL("public/og.png", projectRoot)),
     access(new URL("public/media/tennect-icon.png", projectRoot)),
     access(new URL("public/media/tennect-profile-schedule.png", projectRoot)),
-    access(new URL("public/media/tennis-ball-realistic.png", projectRoot)),
+    access(new URL("public/media/tennis-ball-illustrated.png", projectRoot)),
     access(new URL("public/media/app-store-badge-en.svg", projectRoot)),
     access(new URL("public/media/app-store-badge-ru.svg", projectRoot)),
   ]);
+});
+
+test("renders analytics markers for feature and download interactions", async () => {
+  const html = await htmlFor("/");
+  const analyticsSource = await readFile(
+    new URL("app/components/GoogleAnalytics.tsx", projectRoot),
+    "utf8",
+  );
+
+  assert.equal(
+    (html.match(/data-analytics-event="select_content"/g) ?? []).length,
+    8,
+  );
+  assert.equal(
+    (html.match(/data-analytics-event="app_download_click"/g) ?? []).length,
+    3,
+  );
+  assert.match(analyticsSource, /G-L434P285VX/);
+  assert.match(analyticsSource, /tennect-analytics-consent/);
+  assert.match(analyticsSource, /analytics_storage/);
 });
 
 test("centers every shared showcase dialog in the viewport", async () => {
