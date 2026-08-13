@@ -16,13 +16,19 @@ export const en: SiteContent = {
     legalNav: "Legal and contact links",
     backToTop: "Back to top",
     closeFeature: "Close feature details",
+    nextSlide: "Next instruction",
+    previousSlide: "Previous instruction",
+    slide: "Slide",
+    slideOf: "of",
   },
   nav: {
     features: "Features",
     howItWorks: "How it works",
     insideApp: "Inside the app",
     faq: "FAQ",
+    downloadLabel: "Download for",
     download: "Download for iOS",
+    downloadAndroid: "Download for Android",
     menu: "Menu",
   },
   hero: {
@@ -32,8 +38,8 @@ export const en: SiteContent = {
       "Find players at your level, discover nearby courts and organise every match in one place.",
     download: "Download",
     explore: "See how it works",
-    androidSoon: "Android version coming soon",
     appStoreBadgeAlt: "Download Tennect on the App Store",
+    googlePlayBadgeAlt: "Download Tennect on Google Play",
     notes: ["Built for every level", "Available in 23 languages", "One connected game"],
     imageAlt:
       "Tennect player profile with availability schedule and preferred court surfaces",
@@ -126,6 +132,27 @@ export const en: SiteContent = {
           "Add your preferred clay, grass or hard-court surfaces.",
           "Update your availability whenever your weekly routine changes.",
         ],
+        walkthrough: {
+          title: "Choose a date and time",
+          alt: "Tennect daily availability editor with time periods, weekly repetition and weather forecast",
+          details: [
+            "Tap any date in the availability calendar to open the daily availability screen.",
+            "Tap Morning, Afternoon or Evening to mark the periods when you are available to play.",
+            "Turn on Repeat weekly for any selected period you want to repeat every week.",
+            "Check the weather forecast for the selected date and period before planning your game.",
+          ],
+          privacy: {
+            title: "Choose who sees your availability",
+            alt: "Tennect privacy settings with Everyone, Connections and Private visibility options",
+            details: [
+              "Open Privacy Settings to control who can see your tennis availability.",
+              "Choose Everyone when you want all players to see when you are available.",
+              "Choose Connections so only players you are connected with can see it.",
+              "Choose Private when you do not want anyone else to see your availability.",
+            ],
+            options: ["Everyone", "Connections", "Private"],
+          },
+        },
       },
       {
         label: "Manage matches",
@@ -239,7 +266,7 @@ export const en: SiteContent = {
       {
         question: "Which devices support Tennect?",
         answer:
-          "Tennect is currently available for iPhone and requires iOS 18.6 or later. The Android version is in development; sign up for a notification when it launches.",
+          "Tennect is available for iPhone and requires iOS 18.6 or later. It is also available for Android devices through Google Play.",
       },
     ],
   },

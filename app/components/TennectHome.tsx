@@ -13,6 +13,8 @@ import { GalleryShowcase } from "./GalleryShowcase";
 const legalBase =
   "https://whwhvvfbxaoeezbtqhga.supabase.co/storage/v1/object/public/legal";
 const appStoreUrl = "https://apple.co/3RAyuwX";
+const googlePlayUrl =
+  "https://play.google.com/store/apps/details?id=com.gappcode.tennect&pcampaignid=web_share";
 
 function legalLocale(locale: Locale) {
   return locale === "sr" ? "sr-Latn" : locale;
@@ -24,6 +26,7 @@ export function TennectHome({ locale }: { locale: Locale }) {
     locale === "ru"
       ? "/media/app-store-badge-ru.svg"
       : "/media/app-store-badge-en.svg";
+  const googlePlayBadge = `/media/google-play-badge-${locale}.png`;
   const questionHref = `mailto:tennect@outlook.com?subject=${encodeURIComponent(
     `Tennect — ${content.faq.ask}`,
   )}`;
@@ -33,11 +36,11 @@ export function TennectHome({ locale }: { locale: Locale }) {
     "@type": "MobileApplication",
     name: "Tennect",
     applicationCategory: "SportsApplication",
-    operatingSystem: "iOS",
+    operatingSystem: ["iOS", "Android"],
     inLanguage: content.htmlLang,
     description: content.schema.description,
     featureList: content.schema.features,
-    installUrl: appStoreUrl,
+    installUrl: [appStoreUrl, googlePlayUrl],
     offers: {
       "@type": "Offer",
       price: "0",
@@ -102,18 +105,35 @@ export function TennectHome({ locale }: { locale: Locale }) {
               ))}
             </div>
           </details>
-          <a
-            className="header-cta"
-            href={appStoreUrl}
-            target="_blank"
-            rel="noreferrer"
-            data-analytics-event="app_download_click"
-            data-analytics-placement="header"
-            data-analytics-locale={locale}
-            data-analytics-store="app_store"
-          >
-            {content.nav.download} <ActionIcon badge name="download" />
-          </a>
+          <div className="header-downloads">
+            <span className="header-download-label">{content.nav.downloadLabel}</span>
+            <a
+              aria-label={content.nav.download}
+              className="header-cta"
+              href={appStoreUrl}
+              target="_blank"
+              rel="noreferrer"
+              data-analytics-event="app_download_click"
+              data-analytics-placement="header"
+              data-analytics-locale={locale}
+              data-analytics-store="app_store"
+            >
+              <span>iOS</span> <ActionIcon badge name="download" />
+            </a>
+            <a
+              aria-label={content.nav.downloadAndroid}
+              className="header-cta header-cta-android"
+              href={googlePlayUrl}
+              target="_blank"
+              rel="noreferrer"
+              data-analytics-event="app_download_click"
+              data-analytics-placement="header"
+              data-analytics-locale={locale}
+              data-analytics-store="google_play"
+            >
+              <span>Android</span> <ActionIcon badge name="download" />
+            </a>
+          </div>
           <details className="mobile-menu">
             <summary aria-label={content.aria.openNav}>
               {content.nav.menu}
@@ -176,10 +196,24 @@ export function TennectHome({ locale }: { locale: Locale }) {
                       alt={content.hero.appStoreBadgeAlt}
                     />
                   </a>
-                  <div className="android-soon-card">
-                    <span aria-hidden="true">●</span>
-                    {content.hero.androidSoon}
-                  </div>
+                  <a
+                    className="store-badge-link google-play-link"
+                    href={googlePlayUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={content.hero.googlePlayBadgeAlt}
+                    data-analytics-event="app_download_click"
+                    data-analytics-placement="hero"
+                    data-analytics-locale={locale}
+                    data-analytics-store="google_play"
+                  >
+                    <Image
+                      src={googlePlayBadge}
+                      width={646}
+                      height={250}
+                      alt={content.hero.googlePlayBadgeAlt}
+                    />
+                  </a>
                 </div>
               </div>
             </div>
@@ -235,6 +269,10 @@ export function TennectHome({ locale }: { locale: Locale }) {
           closeLabel={content.aria.closeFeature}
           gallery={content.gallery}
           locale={locale}
+          nextSlideLabel={content.aria.nextSlide}
+          previousSlideLabel={content.aria.previousSlide}
+          slideLabel={content.aria.slide}
+          slideOfLabel={content.aria.slideOf}
         />
 
         <section className="seo-band">

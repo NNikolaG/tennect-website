@@ -16,13 +16,19 @@ export const sr: SiteContent = {
     legalNav: "Pravni dokumenti i kontakt",
     backToTop: "Nazad na vrh",
     closeFeature: "Zatvori detalje funkcije",
+    nextSlide: "Sledeće uputstvo",
+    previousSlide: "Prethodno uputstvo",
+    slide: "Slajd",
+    slideOf: "od",
   },
   nav: {
     features: "Funkcije",
     howItWorks: "Kako funkcioniše",
     insideApp: "U aplikaciji",
     faq: "Česta pitanja",
+    downloadLabel: "Preuzmi za",
     download: "Preuzmi za iOS",
+    downloadAndroid: "Preuzmi za Android",
     menu: "Meni",
   },
   hero: {
@@ -32,8 +38,8 @@ export const sr: SiteContent = {
       "Pronađi igrače svog nivoa, otkrij terene u blizini i organizuj svaki meč na jednom mestu.",
     download: "Preuzmi",
     explore: "Pogledaj funkcije",
-    androidSoon: "Android verzija uskoro",
     appStoreBadgeAlt: "Preuzmi Tennect u App Store-u",
+    googlePlayBadgeAlt: "Preuzmi Tennect na Google Play-u",
     notes: ["Za svaki nivo", "Dostupno na 23 jezika", "Jedna povezana igra"],
     imageAlt:
       "Tennect profil igrača sa rasporedom dostupnosti i omiljenim podlogama",
@@ -125,6 +131,27 @@ export const sr: SiteContent = {
           "Dodaj omiljene podloge: šljaku, travu ili tvrdi teren.",
           "Promeni dostupnost kad god se promeni tvoja nedeljna rutina.",
         ],
+        walkthrough: {
+          title: "Izaberi datum i period",
+          alt: "Tennect podešavanje dnevne dostupnosti sa periodima, nedeljnim ponavljanjem i vremenskom prognozom",
+          details: [
+            "Dodirni željeni datum u kalendaru dostupnosti da otvoriš podešavanje za taj dan.",
+            "Dodirni period Jutro, Popodne ili Veče da obeležiš kada si dostupan za igru.",
+            "Uključi Ponavljaj nedeljno za svaki izabrani period koji želiš da se automatski ponavlja.",
+            "Pogledaj vremensku prognozu za izabrani datum i period pre nego što isplaniraš igru.",
+          ],
+          privacy: {
+            title: "Odredi ko vidi tvoju dostupnost",
+            alt: "Tennect podešavanje privatnosti sa opcijama Svi, Konekcije i Privatno",
+            details: [
+              "Otvori Podešavanja privatnosti da odrediš ko može da vidi tvoju dostupnost za tenis.",
+              "Izaberi Svi kada želiš da tvoju dostupnost vide svi igrači.",
+              "Izaberi Konekcije da je vide samo igrači sa kojima si povezan.",
+              "Izaberi Privatno kada ne želiš da tvoju dostupnost vidi bilo ko drugi.",
+            ],
+            options: ["Svi", "Konekcije", "Privatno"],
+          },
+        },
       },
       {
         label: "Organizuj mečeve",
@@ -238,7 +265,7 @@ export const sr: SiteContent = {
       {
         question: "Na kojim uređajima je aplikacija dostupna?",
         answer:
-          "Tennect je trenutno dostupan za iPhone i zahteva iOS 18.6 ili noviji. Android verzija je u pripremi; prijavi se za obaveštenje da saznaš kada bude objavljena.",
+          "Tennect je dostupan za iPhone i zahteva iOS 18.6 ili noviji. Dostupan je i za Android uređaje putem Google Play prodavnice.",
       },
     ],
   },

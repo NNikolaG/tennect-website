@@ -13,16 +13,27 @@ const galleryMedia = [
   "/media/tennect-tennis-news.png",
 ] as const;
 
+const availabilityWalkthroughImage = "/media/tennect-edit-availability.png";
+const privacySettingsImage = "/media/tennect-privacy-settings.png";
+
 type GalleryShowcaseProps = {
   closeLabel: string;
   gallery: SiteContent["gallery"];
   locale: Locale;
+  nextSlideLabel: string;
+  previousSlideLabel: string;
+  slideLabel: string;
+  slideOfLabel: string;
 };
 
 export function GalleryShowcase({
   closeLabel,
   gallery,
   locale,
+  nextSlideLabel,
+  previousSlideLabel,
+  slideLabel,
+  slideOfLabel,
 }: GalleryShowcaseProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const selectedItem =
@@ -76,7 +87,29 @@ export function GalleryShowcase({
           imageAlt={selectedItem.alt}
           kicker={gallery.kicker}
           number={selectedIndex + 1}
+          nextSlideLabel={nextSlideLabel}
           onClose={() => setSelectedIndex(null)}
+          previousSlideLabel={previousSlideLabel}
+          slideLabel={slideLabel}
+          slideOfLabel={slideOfLabel}
+          walkthrough={
+            selectedItem.walkthrough
+              ? {
+                  slides: [
+                    {
+                      alt: selectedItem.walkthrough.alt,
+                      details: selectedItem.walkthrough.details,
+                      image: availabilityWalkthroughImage,
+                      title: selectedItem.walkthrough.title,
+                    },
+                    {
+                      ...selectedItem.walkthrough.privacy,
+                      image: privacySettingsImage,
+                    },
+                  ],
+                }
+              : undefined
+          }
           title={selectedItem.label}
         />
       ) : null}

@@ -107,14 +107,14 @@ test("renders the English Tennect landing page", async () => {
   assert.match(html, /tennect-profile-schedule\.png/);
   assert.doesNotMatch(html, /class="hero-side/);
   assert.match(html, /Download Tennect for iOS/);
-  assert.match(html, /Android version coming soon/);
-  assert.match(html, /class="android-soon-card"/);
+  assert.match(html, /Download Tennect on Google Play/);
   assert.match(html, /class="button button-lime feature-cta"/);
   assert.match(html, /Is Tennect free\?/);
   assert.match(html, /Requires iOS 18\.6|requires iOS 18\.6/);
   assert.match(html, /https:\/\/apple\.co\/3RAyuwX/);
   assert.match(html, /https:\/\/teal-starship-35c661\.netlify\.app/);
-  assert.doesNotMatch(html, /google-play-badge-en\.png/);
+  assert.match(html, /google-play-badge-en\.png/);
+  assert.doesNotMatch(html, /Android version coming soon|class="android-soon-card"/);
   assert.doesNotMatch(html, /Get early access|Get launch updates/);
   assert.equal((html.match(/aria-haspopup="dialog"/g) ?? []).length, 8);
   assert.doesNotMatch(html, /codex-preview|Building your site/);
@@ -134,7 +134,7 @@ test("renders Serbian and Russian localized routes", async () => {
   assert.match(serbian, /Preuzmi Tennect za iOS/);
   assert.match(serbian, /Da li je Tennect besplatan\?/);
   assert.doesNotMatch(serbian, /Rani pristup|Prijavi se za novosti|Tennect-a/);
-  assert.doesNotMatch(serbian, /google-play-badge-sr\.png/);
+  assert.match(serbian, /google-play-badge-sr\.png/);
   assert.match(russian, /<html lang="ru"/);
   assert.match(
     russian,
@@ -142,7 +142,8 @@ test("renders Serbian and Russian localized routes", async () => {
   );
   assert.match(russian, /Скачать Tennect для iOS/);
   assert.match(russian, /Tennect бесплатный\?/);
-  assert.doesNotMatch(russian, /google-play-badge-ru\.png|Ранний доступ/);
+  assert.match(russian, /google-play-badge-ru\.png/);
+  assert.doesNotMatch(russian, /Ранний доступ/);
   assert.match(
     serbian,
     /https:\/\/superb-pavlova-bfabce\.netlify\.app/,
@@ -193,10 +194,53 @@ test("keeps required public assets in the repository", async () => {
     access(new URL("public/og.png", projectRoot)),
     access(new URL("public/media/tennect-icon.png", projectRoot)),
     access(new URL("public/media/tennect-profile-schedule.png", projectRoot)),
+    access(new URL("public/media/tennect-edit-availability.png", projectRoot)),
+    access(new URL("public/media/tennect-privacy-settings.png", projectRoot)),
     access(new URL("public/media/tennis-ball-illustrated.png", projectRoot)),
     access(new URL("public/media/app-store-badge-en.svg", projectRoot)),
     access(new URL("public/media/app-store-badge-ru.svg", projectRoot)),
+    access(new URL("public/media/google-play-badge-en.png", projectRoot)),
+    access(new URL("public/media/google-play-badge-sr.png", projectRoot)),
+    access(new URL("public/media/google-play-badge-ru.png", projectRoot)),
   ]);
+});
+
+test("localizes the detailed availability walkthrough", async () => {
+  const [english, serbian, russian] = await Promise.all([
+    htmlFor("/"),
+    htmlFor("/sr"),
+    htmlFor("/ru"),
+  ]);
+
+  assert.match(english, /Tap Morning, Afternoon or Evening/);
+  assert.match(serbian, /Dodirni period Jutro, Popodne ili Veče/);
+  assert.match(russian, /Нажмите «Утро», «День» или «Вечер»/);
+  assert.match(english, /Choose who sees your availability/);
+  assert.match(serbian, /Odredi ko vidi tvoju dostupnost/);
+  assert.match(russian, /Выберите, кто видит вашу доступность/);
+  assert.match(english, /Next instruction/);
+  assert.match(serbian, /Sledeće uputstvo/);
+  assert.match(russian, /Следующая инструкция/);
+});
+
+test("supports carousel controls, keyboard navigation and touch swipes", async () => {
+  const dialogSource = await readFile(
+    new URL("app/components/ShowcaseDialog.tsx", projectRoot),
+    "utf8",
+  );
+
+  assert.match(dialogSource, /onTouchStart=\{handleTouchStart\}/);
+  assert.match(dialogSource, /onTouchEnd=\{handleTouchEnd\}/);
+  assert.match(dialogSource, /event\.key === "ArrowLeft"/);
+  assert.match(dialogSource, /event\.key === "ArrowRight"/);
+  assert.match(dialogSource, /aria-live="polite"/);
+
+  const css = await readFile(new URL("app/globals.css", projectRoot), "utf8");
+  const navigationRule =
+    css.match(/\.showcase-dialog-slider-nav\s*\{([^}]*)\}/)?.[1] ?? "";
+  assert.match(navigationRule, /bottom:\s*20px/);
+  assert.match(navigationRule, /background:\s*rgba\(/);
+  assert.match(navigationRule, /left:\s*50%/);
 });
 
 test("renders analytics markers for feature and download interactions", async () => {
@@ -212,7 +256,13 @@ test("renders analytics markers for feature and download interactions", async ()
   );
   assert.equal(
     (html.match(/data-analytics-event="app_download_click"/g) ?? []).length,
-    3,
+    5,
+  );
+  assert.match(html, /Download for Android/);
+  assert.match(html, /data-analytics-store="google_play"/);
+  assert.match(
+    html,
+    /play\.google\.com\/store\/apps\/details\?id=com\.gappcode\.tennect/,
   );
   assert.match(analyticsSource, /G-L434P285VX/);
   assert.match(analyticsSource, /tennect-analytics-consent/);
@@ -238,8 +288,9 @@ test("keeps desktop header controls at the same height", async () => {
   const languageRule =
     css.match(/\.language-switcher summary\s*\{([^}]*)\}/)?.[1] ?? "";
 
-  assert.match(downloadRule, /height:\s*52px/);
-  assert.match(languageRule, /min-height:\s*52px/);
+  assert.match(downloadRule, /height:\s*46px/);
+  assert.match(downloadRule, /width:\s*116px/);
+  assert.match(languageRule, /min-height:\s*46px/);
 });
 
 test("uses only the standard Next.js runtime", async () => {

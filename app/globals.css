@@ -15,13 +15,13 @@ a { -webkit-tap-highlight-color: transparent;
 }
 img { display: block;
 }
-.site-header { align-items: center; background: var(--paper); display: grid; grid-template-columns: 1fr auto 1fr; min-height: 98px; padding: 18px clamp(22px, 4vw, 72px); position: relative; z-index: 20;
+.site-header { align-items: center; background: var(--paper); display: grid; grid-template-columns: auto 1fr auto; min-height: 98px; padding: 18px clamp(22px, 4vw, 72px); position: relative; z-index: 20;
 }
 .brand { align-items: center; display: inline-flex; font-family: var(--font-display), sans-serif; font-size: 2rem; font-weight: 700; gap: 10px; justify-self: start; letter-spacing: -0.03em;
 }
 .brand img { border-radius: 50%; height: 44px; width: 44px;
 }
-.desktop-nav { align-items: center; display: flex; font-size: 0.79rem; font-weight: 800; gap: clamp(22px, 3vw, 50px); letter-spacing: 0.04em; text-transform: uppercase;
+.desktop-nav { align-items: center; display: flex; font-size: 0.79rem; font-weight: 800; gap: clamp(22px, 3vw, 50px); justify-self: center; letter-spacing: 0.04em; text-transform: uppercase;
 }
 .desktop-nav a,
 footer nav a { position: relative;
@@ -34,15 +34,23 @@ footer nav a::after { background: currentColor; bottom: -5px; content: ""; heigh
 footer nav a:hover::after,
 footer nav a:focus-visible::after { transform: scaleX(1);
 }
-.header-cta { align-items: center; background: var(--ink); border-radius: 999px; color: white; display: flex; font-size: 0.78rem; font-weight: 800; gap: 28px; height: 52px; justify-self: end; letter-spacing: 0.05em; padding: 8px 8px 8px 20px; text-transform: uppercase;
+.header-downloads { align-items: center; display: flex; gap: 8px;
+}
+.header-download-label { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.07em; margin-right: 2px; text-transform: uppercase; white-space: nowrap;
+}
+.header-cta { align-items: center; background: var(--ink); border-radius: 999px; color: white; display: flex; font-size: 0.74rem; font-weight: 800; gap: 8px; height: 46px; justify-content: space-between; letter-spacing: 0.04em; padding: 7px 7px 7px 14px; text-transform: uppercase; white-space: nowrap; width: 116px;
 }
 .header-cta > .action-icon { background: var(--clay);
+}
+.header-cta-android { background: var(--clay);
+}
+.header-cta-android > .action-icon { background: var(--ink);
 }
 .header-tools { align-items: center; display: flex; gap: 10px; justify-self: end;
 }
 .language-switcher { position: relative;
 }
-.language-switcher summary { align-items: center; border: 1px solid var(--line); border-radius: 999px; cursor: pointer; display: flex; font-size: 0.72rem; font-weight: 800; gap: 8px; justify-content: center; list-style: none; min-height: 52px; min-width: 68px; padding: 12px 15px;
+.language-switcher summary { align-items: center; border: 1px solid var(--line); border-radius: 999px; cursor: pointer; display: flex; font-size: 0.72rem; font-weight: 800; gap: 8px; justify-content: center; list-style: none; min-height: 46px; min-width: 64px; padding: 10px 14px;
 }
 .language-switcher summary::-webkit-details-marker { display: none;
 }
@@ -123,9 +131,9 @@ footer nav a:focus-visible::after { transform: scaleX(1);
 }
 .app-store-link img { height: auto; width: 156px;
 }
-.android-soon-card { align-items: center; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.6); border-radius: 10px; color: white; display: flex; font-size: 0.66rem; font-weight: 800; gap: 9px; justify-content: center; letter-spacing: 0.05em; line-height: 1.3; min-height: 52px; padding: 9px 16px; text-transform: uppercase; width: 170px;
+.google-play-link { height: 52px; overflow: hidden; position: relative; width: 176px;
 }
-.android-soon-card span { color: var(--lime); font-size: 0.55rem;
+.google-play-link img { height: auto; left: 50%; position: absolute; top: 50%; transform: translate(-50%, -50%); width: 176px;
 }
 .button { align-items: center; border-radius: 999px; display: inline-flex; font-size: 0.76rem; font-weight: 800; gap: 24px; justify-content: center; letter-spacing: 0.06em; min-height: 52px; padding: 14px 24px; text-transform: uppercase; transition: transform 180ms ease, background 180ms ease;
 }
@@ -140,7 +148,7 @@ footer nav a:focus-visible::after { transform: scaleX(1);
 }
 .action-icon { align-items: center; color: currentColor; display: inline-flex; flex: 0 0 auto; height: 30px; justify-content: center; pointer-events: none; position: relative; width: 30px;
 }
-.action-icon-badge { border-radius: 50%; height: 36px; width: 36px;
+.action-icon-badge { border-radius: 50%; height: 32px; width: 32px;
 }
 .action-icon-glyph { display: block; position: relative;
 }
@@ -261,7 +269,9 @@ footer nav a:focus-visible::after { transform: scaleX(1);
 }
 .showcase-dialog::backdrop { backdrop-filter: blur(9px); background: rgba(4, 22, 17, 0.72);
 }
-.showcase-dialog-panel { display: grid; grid-template-columns: 1.08fr 0.92fr; min-height: 560px; position: relative;
+.showcase-dialog-panel { min-height: 560px; position: relative;
+}
+.showcase-dialog-slide { animation: showcase-slide-in 220ms ease-out; display: grid; grid-template-columns: 1.08fr 0.92fr; min-height: 560px;
 }
 .showcase-dialog-close { align-items: center; background: var(--ink); border: 0; border-radius: 50%; color: white; cursor: pointer; display: flex; font-size: 1.8rem; height: 46px; justify-content: center; line-height: 1; position: absolute; right: 20px; top: 20px; width: 46px; z-index: 3;
 }
@@ -285,6 +295,42 @@ footer nav a:focus-visible::after { transform: scaleX(1);
 .showcase-dialog-phone { align-items: flex-end; background: var(--lime); display: flex; justify-content: center; overflow: hidden; padding: 58px 38px 0;
 }
 .showcase-dialog-phone img { border-radius: 28px 28px 0 0; box-shadow: 0 24px 45px rgba(8, 39, 31, 0.22); height: auto; max-width: 300px; object-fit: contain; transform: translateY(112px); width: 100%;
+}
+.showcase-dialog-with-walkthrough { max-width: 1050px; overflow: hidden;
+}
+.showcase-dialog-with-walkthrough .showcase-dialog-panel { height: min(680px, calc(100dvh - 64px)); min-height: 0;
+}
+.showcase-dialog-with-walkthrough .showcase-dialog-slide { grid-template-columns: 1.05fr 0.95fr; height: 100%; min-height: 0; touch-action: pan-y;
+}
+.showcase-dialog-with-walkthrough .showcase-dialog-copy { align-self: stretch; overflow-y: auto; padding-bottom: 100px; padding-top: 62px;
+}
+.showcase-dialog-with-walkthrough .showcase-dialog-phone { align-items: center; padding: 52px 38px 88px;
+}
+.showcase-dialog-with-walkthrough .showcase-dialog-phone img { border-radius: 28px; max-height: 520px; max-width: 250px; transform: none; width: auto;
+}
+.showcase-dialog-walkthrough-title { font-size: clamp(2.8rem, 4.8vw, 4.8rem) !important;
+}
+.showcase-dialog-options { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px;
+}
+.showcase-dialog-options span { background: var(--ink); border: 1px solid var(--ink); border-radius: 999px; color: white; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.04em; padding: 9px 15px; text-transform: uppercase;
+}
+.showcase-dialog-options span:nth-child(2) { background: transparent; color: var(--ink);
+}
+.showcase-dialog-options span:nth-child(3) { background: var(--paper); border-color: var(--line); color: var(--ink); opacity: 0.72;
+}
+.showcase-dialog-slider-nav { align-items: center; background: rgba(251, 250, 247, 0.96); border: 1px solid var(--line); border-radius: 999px; bottom: 20px; display: flex; gap: 8px; left: 50%; padding: 4px; position: absolute; transform: translateX(-50%); z-index: 4;
+}
+.showcase-dialog-slider-nav button { align-items: center; background: transparent; border: 0; border-radius: 50%; color: var(--ink); cursor: pointer; display: flex; font-size: 1.05rem; height: 34px; justify-content: center; width: 34px;
+}
+.showcase-dialog-slider-nav button:hover:not(:disabled) { background: var(--lime); color: var(--ink);
+}
+.showcase-dialog-slider-nav button:focus-visible { outline: 2px solid currentColor; outline-offset: 2px;
+}
+.showcase-dialog-slider-nav button:disabled { cursor: default; opacity: 0.25;
+}
+.showcase-dialog-slider-nav > span { font-size: 0.78rem; font-weight: 800; min-width: 38px; text-align: center;
+}
+@keyframes showcase-slide-in { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: translateX(0); }
 }
 body:has(.showcase-dialog[open]) { overflow: hidden;
 }
@@ -405,7 +451,7 @@ footer nav { display: flex; gap: 24px;
   }
   .language-switcher > div { top: 52px;
   }
-  .header-cta { display: none;
+  .header-downloads { display: none;
   }
   .mobile-menu { display: block; justify-self: end; position: relative;
   }
@@ -444,7 +490,11 @@ footer nav { display: flex; gap: 24px;
   }
   .showcase-dialog { border-radius: 24px; max-height: calc(100dvh - 32px); width: calc(100vw - 24px);
   }
-  .showcase-dialog-panel { grid-template-columns: 1fr;
+  .showcase-dialog-slide { grid-template-columns: 1fr;
+  }
+  .showcase-dialog-with-walkthrough .showcase-dialog-panel { height: calc(100dvh - 32px);
+  }
+  .showcase-dialog-with-walkthrough .showcase-dialog-slide { display: block; height: 100%; overflow-y: auto;
   }
   .showcase-dialog-copy { padding: 70px 26px 36px;
   }
@@ -453,6 +503,12 @@ footer nav { display: flex; gap: 24px;
   .showcase-dialog-phone { max-height: 360px; padding: 38px 42px 0;
   }
   .showcase-dialog-phone img { max-width: 245px; transform: translateY(82px);
+  }
+  .showcase-dialog-with-walkthrough .showcase-dialog-copy { overflow: visible; padding-bottom: 40px; padding-top: 70px;
+  }
+  .showcase-dialog-with-walkthrough .showcase-dialog-phone { height: 440px; max-height: none; padding: 30px 32px 80px;
+  }
+  .showcase-dialog-with-walkthrough .showcase-dialog-phone img { max-height: 340px; max-width: 245px;
   }
   .steps { padding: 90px 24px;
   }
@@ -498,9 +554,13 @@ footer nav { display: flex; gap: 24px;
   }
   .platform-actions { align-items: flex-start; flex-direction: column;
   }
-  .app-store-link img { width: 148px;
+  .store-options { gap: 6px;
   }
-  .android-soon-card { font-size: 0.6rem; padding-left: 10px; padding-right: 10px; width: 140px;
+  .app-store-link img { width: 132px;
+  }
+  .google-play-link { height: 44px; width: 149px;
+  }
+  .google-play-link img { width: 149px;
   }
   .button { justify-content: space-between;
   }
@@ -523,6 +583,6 @@ footer nav { display: flex; gap: 24px;
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto;
   }
-  * { transition-duration: 0.01ms !important;
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important;
   }
 }

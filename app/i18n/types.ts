@@ -17,6 +17,17 @@ export type GalleryContent = {
   action: string;
   copy: string;
   details: [string, string, string];
+  walkthrough?: {
+    title: string;
+    alt: string;
+    details: [string, string, string, string];
+    privacy: {
+      title: string;
+      alt: string;
+      details: [string, string, string, string];
+      options: [string, string, string];
+    };
+  };
 };
 
 export type FaqContent = {
@@ -40,13 +51,19 @@ export type SiteContent = {
     legalNav: string;
     backToTop: string;
     closeFeature: string;
+    nextSlide: string;
+    previousSlide: string;
+    slide: string;
+    slideOf: string;
   };
   nav: {
     features: string;
     howItWorks: string;
     insideApp: string;
     faq: string;
+    downloadLabel: string;
     download: string;
+    downloadAndroid: string;
     menu: string;
   };
   hero: {
@@ -55,8 +72,8 @@ export type SiteContent = {
     copy: string;
     download: string;
     explore: string;
-    androidSoon: string;
     appStoreBadgeAlt: string;
+    googlePlayBadgeAlt: string;
     notes: [string, string, string];
     imageAlt: string;
   };
