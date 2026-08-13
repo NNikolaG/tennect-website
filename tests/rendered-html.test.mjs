@@ -113,6 +113,7 @@ test("renders the English Tennect landing page", async () => {
   assert.match(html, /Is Tennect free\?/);
   assert.match(html, /Requires iOS 18\.6|requires iOS 18\.6/);
   assert.match(html, /https:\/\/apple\.co\/3RAyuwX/);
+  assert.match(html, /https:\/\/teal-starship-35c661\.netlify\.app/);
   assert.doesNotMatch(html, /google-play-badge-en\.png/);
   assert.doesNotMatch(html, /Get early access|Get launch updates/);
   assert.equal((html.match(/aria-haspopup="dialog"/g) ?? []).length, 8);
@@ -142,6 +143,14 @@ test("renders Serbian and Russian localized routes", async () => {
   assert.match(russian, /Скачать Tennect для iOS/);
   assert.match(russian, /Tennect бесплатный\?/);
   assert.doesNotMatch(russian, /google-play-badge-ru\.png|Ранний доступ/);
+  assert.match(
+    serbian,
+    /https:\/\/superb-pavlova-bfabce\.netlify\.app/,
+  );
+  assert.match(
+    russian,
+    /https:\/\/animated-basbousa-5f9c2c\.netlify\.app/,
+  );
 });
 
 test("serves static robots and localized sitemap metadata", async () => {

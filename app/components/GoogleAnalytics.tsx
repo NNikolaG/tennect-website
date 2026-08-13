@@ -1,14 +1,13 @@
 "use client";
 
 import { useEffect, useSyncExternalStore } from "react";
+import { getPrivacyPolicyUrl } from "../legal-links";
 
 const measurementId =
   process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-L434P285VX";
 const consentStorageKey = "tennect-analytics-consent";
 const consentChangeEvent = "tennect-analytics-consent-change";
 const googleTagScriptId = "tennect-google-analytics";
-const legalBase =
-  "https://whwhvvfbxaoeezbtqhga.supabase.co/storage/v1/object/public/legal";
 
 type ConsentChoice = "granted" | "denied";
 type GtagArguments = [command: string, ...values: unknown[]];
@@ -131,8 +130,7 @@ export function GoogleAnalytics({ lang }: { lang: string }) {
     () => false,
   );
   const copy = consentCopy[localeKey(lang)];
-  const policyLocale = lang.startsWith("sr") ? "sr-Latn" : localeKey(lang);
-  const privacyHref = `${legalBase}/privacy-policies/privacy-policy-${policyLocale}.html`;
+  const privacyHref = getPrivacyPolicyUrl(lang);
 
   useEffect(() => {
     if (choice !== "granted") return;

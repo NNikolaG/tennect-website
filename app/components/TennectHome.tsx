@@ -5,6 +5,7 @@ import {
   locales,
   type Locale,
 } from "../i18n";
+import { getPrivacyPolicyUrl } from "../legal-links";
 import { ActionIcon } from "./ActionIcon";
 import { FeatureShowcase } from "./FeatureShowcase";
 import { GalleryShowcase } from "./GalleryShowcase";
@@ -320,7 +321,7 @@ export function TennectHome({ locale }: { locale: Locale }) {
         <nav aria-label={content.aria.legalNav}>
           <a href="mailto:tennect@outlook.com">{content.footer.contact}</a>
           <a
-            href={`${legalBase}/privacy-policies/privacy-policy-${policyLocale}.html`}
+            href={getPrivacyPolicyUrl(locale)}
             target="_blank"
             rel="noreferrer"
           >
